@@ -27,7 +27,7 @@ int main() {
  */
 
   float f_num = 1.0f;
-  printf("\nfloat underflow: f_num=%f, f_num+0.0000001f=%f", 
+  printf("\nfloat underflow: f_num=%f, f_num+0.0000001f=%f\n", 
          f_num, f_num+0.0000001f);
   return 0;
 }
