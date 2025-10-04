@@ -9,5 +9,3 @@ and compileted executable file will be named "task". and other.
 
 or if we have several files .c for 1 program
 executable file will be named like "task{number of task}"
-
-note: pract1 was test so it have no makefile, but have .sh scripts 'n log maker others haven't
