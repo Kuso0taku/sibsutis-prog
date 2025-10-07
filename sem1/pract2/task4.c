@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  float f = 0.0;
+  float f;
   printf("Введите значение с плавающей запятой: ");
   scanf("%f", &f);
   printf("Запись с фиксированной запятой: %f\n", f);

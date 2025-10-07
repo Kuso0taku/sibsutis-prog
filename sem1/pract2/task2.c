@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-  int i = 0;
+  int i;
   printf("Enter symbol in ASCII (int num): ");
   scanf("%d", &i);
   char ch = i;
