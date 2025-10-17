@@ -9,6 +9,7 @@ int main() {
     scanf("%d", &days);
     if (days > 0) {printf("%d days equals %d weeks and %d days\n", days, days/WEEK, days%WEEK);}
   } while (days > 0);
+  printf("Thanks for using my program!\n");
 
   return 0;
 }
