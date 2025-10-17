@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-double sqr(double num) {
+double sqrt(double num) {
   return num*num;
 }
 
