@@ -8,7 +8,7 @@ int main() {
   double num;
   printf("Enter double num: ");
   scanf("%lf", &num);
-  printf("Square of this num: %lf\n", num*num);
+  printf("Square of this num: %lf\n", sqrt(num));
   
   return 0;
 }
