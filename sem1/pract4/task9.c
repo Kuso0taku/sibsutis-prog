@@ -12,6 +12,7 @@ void Temperature(double temp) {
 }
 
 int main() {
+  printf("Welcome to temperature converter! To exit enter a letter\n\n");
   double temp;
   int code;
   do {
