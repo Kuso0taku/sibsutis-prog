@@ -18,8 +18,9 @@ int main() {
   do {
     printf("Enter temperature in Fahrenheit: ");
     code = scanf("%lf", &temp);
-    if (code) {Temperature(temp);}
+    if (code==1) {Temperature(temp);}
   } while (code == 1);
+
   printf("Thanks for using my program!\n");
   
   return 0;
