@@ -1,7 +1,7 @@
-### Practice tasks from "C Primer Plus 6th Edition" book
+# Practice tasks from "C Primer Plus 6th Edition" book
 
 every pract have .c files of codes and 
-**makefile** (exclude pract1) to compile all .c (tasks)
+**makefile** to compile all .c (tasks)
 
 so u just need to write ```make``` in your linux console to compile all files
 
