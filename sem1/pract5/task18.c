@@ -8,7 +8,7 @@ int main() {
     weeks++;
     friends = (friends-weeks)*2;
   }
-  printf("Wow! You've %d friends in %d weeks!\n", friends, weeks);
+  printf("Wow! You'll have %d friends in %d weeks!\n", friends, weeks);
   
   return 0;
 }
