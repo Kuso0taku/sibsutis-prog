@@ -9,7 +9,7 @@ int main() {
     balance += balance * perc/100 - withdraw;
     years++;
   }
-  printf("Your money'll be gone in %d years\n", ++years);
+  printf("Your money'll be gone in %d years\n", years);
    
   return 0;
 }
