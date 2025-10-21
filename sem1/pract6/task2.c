@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+  unsigned short count=0;
+  char ch;
+  while ((ch=getchar()) != '#') {
+    printf("'%c':%hu ", ch, ch);
+    if (!(++count % 8)) {printf("\n");}
+  }
+  
+  return 0;
+}
