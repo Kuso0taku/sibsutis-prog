@@ -16,17 +16,17 @@ int main() {
   scanf("%d", &h);
 
   int over_h = (h>HOURS) ? (h-HOURS) : 0;
-  int amount = over_h*RATIO*SALARY + (h-over_h)*SALARY;
+  float amount = over_h*RATIO*SALARY + (h-over_h)*SALARY;
 
-  int tax=0;
+  float tax=0;
   if (amount <= TAXFOR1) {tax = amount * TAXRATIO1;}
   else if (amount <= TAXFOR1+TAXFOR2) {
     tax = TAX1 + (amount - TAXFOR1) * TAXRATIO2;
   } else {tax = TAX1 + TAX2 + (amount-TAXFOR1-TAXFOR2)*TAXRATIO3;}
-  int salary = amount - tax;
+  float salary = amount - tax;
   
-  printf("Total amount of charges: %d\n", amount);
-  printf("\ttax: %d\n\tnet salary: %d\n", tax, salary);
+  printf("Total amount of charges: $%.2f\n", amount);
+  printf("\t$tax: %.2f\n\tnet salary: $%.2f\n", tax, salary);
   
   return 0;
 }
