@@ -26,7 +26,7 @@ int main() {
   float salary = amount - tax;
   
   printf("Total amount of charges: $%.2f\n", amount);
-  printf("\t$tax: %.2f\n\tnet salary: $%.2f\n", tax, salary);
+  printf("\ttax: $%.2f\n\tnet salary: $%.2f\n", tax, salary);
   
   return 0;
 }

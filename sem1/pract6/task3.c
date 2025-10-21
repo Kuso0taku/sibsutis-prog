@@ -4,7 +4,7 @@ int main() {
   int n_even=0, n_odd=0, even_sum=0, odd_sum=0;
   int num;
 
-  printf("Enter int number (0 to stop): ");
+  printf("Enter int numbers (0 to stop): ");
   scanf("%d", &num);
   while (num != 0) {
     if (num%2) {

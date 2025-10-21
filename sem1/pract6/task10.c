@@ -16,7 +16,7 @@ int main() {
   do {
     for (int i=0; i<70; i++) {printf("-");}
     printf("\n");
-    printf("Choose your category (enter 'q' to exit):\n");
+    printf("Choose your category (enter a letter to exit):\n");
     printf("1) Alone\t\t2)Head of family\n");
     printf("3) Married, joint farming\t4) Married, separated farming\n");
     for (int i=0; i<70; i++) {printf("-");}
