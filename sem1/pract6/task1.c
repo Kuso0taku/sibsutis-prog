@@ -5,6 +5,7 @@
 int main() {
   unsigned short n_spc=0, n_nline=0, n_other=0;
   char ch;
+  printf("Enter smth here ('#' to exit):\n");
   while ((ch = getchar()) != '#') {
     switch (ch) {
       case SPACE:
