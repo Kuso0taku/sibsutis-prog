@@ -11,9 +11,9 @@ int main() {
     arr2[i]=sum;
   }
   printf("Result of program:\n");
-  for (int i=0; i<8; i++) {printf("%-20lf ", arr1[i]);}
+  for (int i=0; i<8; i++) {printf("%-10lf ", arr1[i]);}
   printf("\n");
-  for (int i=0; i<8; i++) {printf("%-20lf ", arr2[i]);}
+  for (int i=0; i<8; i++) {printf("%-10lf ", arr2[i]);}
   printf("\n");
   
   return 0;
