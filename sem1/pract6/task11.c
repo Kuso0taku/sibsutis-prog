@@ -9,7 +9,7 @@
 #define DELIVERY_A 0.5 // +$0.5 for every lb if goods > 20lb
 
 int main() {
-  int ch;
+  char ch;
   float w_beets=0, w_arts=0, w_carrots=0;
 
   do {
@@ -21,7 +21,6 @@ int main() {
     putchar('\n');
 
     ch=getchar();
-
     while ((getchar()) != '\n');
 
     float input;
@@ -49,10 +48,11 @@ int main() {
     }
     putchar('\n');
 
-  } while (ch != 'q');
+    if (ch == 'a' || ch=='b' || ch=='c') {
+      printf("Now ur order: %.2flb artichokes, %.2flb beets, %.2flb carrots\n\n",
+           w_arts, w_beets, w_carrots); getchar();}
 
-    printf("Now ur order: %.2flb artichokes, %.2flb beets, %.2flb carrots\n\n",
-           w_arts, w_beets, w_carrots);
+  } while (ch != 'q');
   
   float weight = w_arts + w_beets + w_carrots;
   float cost_arts = w_arts*ARTICHOKE;
