@@ -19,7 +19,7 @@ int main() {
     printf("a) artichoke\t\tb) beet\nc) caroots\t\tq) make the order\n");
     for (int i=0; i<50; i++) {putchar('-');}
     putchar('\n');
-    //scanf(" %c", &ch); // to ignore space symbols ('\n', '\t', ' ', ..)
+
     ch=getchar();
 
     while ((getchar()) != '\n');
