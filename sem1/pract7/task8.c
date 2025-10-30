@@ -5,8 +5,8 @@ double power(double a, int n) {
   if (a==0) return 0;
   if (n==0) return 1;
   double res=a;
-  if (n>0) for (int i=0; i<n; i++) res*=a;
-  else for (int i=0; i<n; i++) res*=1/a;
+  if (n>0) for (int i=0; i<n-1; i++) res*=a;
+  else for (int i=n; i<=0; i++) res*=1/a;
   return res;
 }
 
@@ -21,7 +21,7 @@ int main() {
     code0 = scanf("%lf", &a);
     printf("Enter a power: ");
     if (code0==1 && (code1=scanf("%d", &n))==1)
-    printf("(%.2lf)^%d=%.2lf\n", a, n, power(a,n));
+    printf("(%.2lf)^(%d)=%.2lf\n", a, n, power(a,n));
     for (int i=0; i<25; i++) putchar('-'); 
     putchar('\n');
   } while (code0==1 && code1==1);
