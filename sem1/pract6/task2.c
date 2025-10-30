@@ -6,7 +6,7 @@ int main() {
   printf("Enter smth here ('#' to exit):\n");
   while ((ch=getchar()) != '#') {
     printf("'%c':%hu ", ch, ch);
-    if (!(++count % 8)) {printf("\n");}
+    if (!(++count % 8)) {putchar('\n');}
   }
   
   return 0;

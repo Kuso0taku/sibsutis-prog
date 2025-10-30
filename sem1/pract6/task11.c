@@ -9,17 +9,20 @@
 #define DELIVERY_A 0.5 // +$0.5 for every lb if goods > 20lb
 
 int main() {
-  char ch;
+  int ch;
   float w_beets=0, w_arts=0, w_carrots=0;
 
   do {
-    for (int i=0; i<50; i++) {printf("-");}
-    printf("\n");
+    for (int i=0; i<50; i++) {putchar('-');}
+    putchar('\n');
     printf("\tWhat do you want to order?\n");
     printf("a) artichoke\t\tb) beet\nc) caroots\t\tq) make the order\n");
-    for (int i=0; i<50; i++) {printf("-");}
-    printf("\n");
-    scanf(" %c", &ch); // to ignore space symbols ('\n', '\t', ' ', ..)
+    for (int i=0; i<50; i++) {putchar('-');}
+    putchar('\n');
+    //scanf(" %c", &ch); // to ignore space symbols ('\n', '\t', ' ', ..)
+    ch=getchar();
+
+    while ((getchar()) != '\n');
 
     float input;
     switch (ch) {
@@ -42,15 +45,14 @@ int main() {
         printf("Oh, that's all? Let's calculate...\n");
         break; 
       default:
-        printf("\nOops! Wrong command! Try again.\n\n");
-        continue;
+        printf("\nOops! Wrong command! Try again.\n");
     }
-
-    
-    printf("Now ur order: %.2flb artichokes, %.2flb beets, %.2flb carrots\n\n",
-           w_arts, w_beets, w_carrots);
+    putchar('\n');
 
   } while (ch != 'q');
+
+    printf("Now ur order: %.2flb artichokes, %.2flb beets, %.2flb carrots\n\n",
+           w_arts, w_beets, w_carrots);
   
   float weight = w_arts + w_beets + w_carrots;
   float cost_arts = w_arts*ARTICHOKE;
@@ -67,8 +69,8 @@ int main() {
   
   printf("\n");
   printf("\tCheck.\n");
-  for (int i=0; i<23; i++) {printf("*");}
-  printf("\n");
+  for (int i=0; i<23; i++) {putchar('*');}
+  putchar('\n');
 
   printf("lb cost: ");
   if (weight <= 5) {printf("$%.2f\n", DELIVERY_5);}
@@ -85,8 +87,8 @@ int main() {
   
   printf("\ntotal order cost: $%.2f\n", total_cost);
 
-  for (int i=0; i<23; i++) {printf("*");}
-  printf("\n");
+  for (int i=0; i<23; i++) {putchar('*');}
+  putchar('\n');
   
   return 0;
 }

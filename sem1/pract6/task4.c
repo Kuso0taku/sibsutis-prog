@@ -7,7 +7,7 @@ int main() {
   while ((ch=getchar()) != '#') {
     if (ch=='.') {printf("!");count++;}
     else if (ch=='!') {printf("!!");count++;}
-    else {printf("%c", ch);}
+    else {putchar(ch);}
   }
   printf("\nReplaced %hu characters\n", count);
   

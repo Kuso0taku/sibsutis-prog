@@ -36,13 +36,13 @@ void program(float tariff) {
 int main() {
   int choice;
   do { 
-    for (int i=0; i<60; i++) {printf("*");}
-    printf("\n");
+    for (int i=0; i<60; i++) {putchar('*');}
+    putchar('\n');
     printf("Enter number corresponding to desired tariff rate or action:\n");
     printf("1) $%.2f/h\t\t\t2) $%.2f/h\n3) $%.2f/h\t\t\t4) $%.2f/h\n5) Exit\n",
            TARIFF1, TARIFF2, TARIFF3, TARIFF4);
-    for (int i=0; i<60; i++) {printf("*");}
-    printf("\n");
+    for (int i=0; i<60; i++) {putchar('*');}
+    putchar('\n');
     scanf("%d", &choice);
 
     switch (choice) {

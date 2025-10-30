@@ -8,7 +8,7 @@ int main() {
     switch (ch) {
       case '.': printf("!");count++; break;
       case '!': printf("!!");count++;break;
-      default: printf("%c", ch);}
+      default: putchar(ch);}
   }
   printf("\nReplaced %hu characters\n", count);
   
