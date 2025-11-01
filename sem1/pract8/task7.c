@@ -22,8 +22,9 @@ void print_arr(int rows, int cols, double arr[rows][cols]) {
 int main() {
   int rows, cols;
   printf("Enter sizes of the array (rows and cols): ");
-  while (!(scanf("%d%d", &rows, &cols)) || rows <= 0 || cols <= 0) 
+  while (!(scanf("%d%d", &rows, &cols)) || rows <= 0 || cols <= 0) {
     printf("Wrong input! Enter two positive ints: ");
+    while (getchar() != '\n');} // clearing buffer
   
   double arr[rows][cols];
   double tar[rows][cols];

@@ -9,8 +9,9 @@ int max_i(double arr[], int n) {
 int main() {
   int size;
   printf("Enter the size of the array: ");
-  while (!(scanf("%d", &size)) || size <= 0) 
+  while (!(scanf("%d", &size)) || size <= 0) {
     printf("Wrong input! Enter positive int: ");
+    while (getchar() != '\n');} // clearing buffer
 
   printf("Enter every double element of the array: ");
   double arr[size];
