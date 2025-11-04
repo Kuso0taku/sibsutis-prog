@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define SALARY 10'000 // per hour
+#define SALARY 10000 // per hour
 #define RATIO 1.5
 #define HOURS 40
 #define TARIFF1 8.75
@@ -52,7 +52,7 @@ int main() {
       case 4: program(TARIFF4); break;
       default: continue;
     }
-  } while (!(choice >= 1 && choice <= 5));
+  } while (choice != 5);
     
   return 0;
 }

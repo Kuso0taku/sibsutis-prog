@@ -12,8 +12,8 @@ int main() {
     } else {n_even++; even_sum += num;}
     scanf("%d", &num);
   }
-  printf("Number of even: %d\nAvg even: %d\n", n_even, even_sum/n_even);
-  printf("Number of odd: %d\nAvg odd: %d\n", n_odd, odd_sum/n_odd);
+  printf("Even numbers: %d\nAvg even: %d\n", n_even, even_sum/n_even);
+  printf("Odd numbers: %d\nAvg odd: %d\n", n_odd, odd_sum/n_odd);
   
   return 0;
 }

@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-#define ALONE 17'850
-#define HEAD 23'900 // of family
-#define JOINT 29'750 // married, joint farming
-#define SEPARATED 14'875 // married, separated farming
+#define ALONE 17850
+#define HEAD 23900 // of family
+#define JOINT 29750 // married, joint farming
+#define SEPARATED 14875 // married, separated farming
 #define RATIO1 0.15
 #define RATIO2 0.28
 

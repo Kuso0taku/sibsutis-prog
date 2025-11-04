@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define SALARY 10'000 // per hour
+#define SALARY 10000 // per hour
 #define RATIO 1.5
 #define HOURS 40
 #define TAXRATIO1 0.15
