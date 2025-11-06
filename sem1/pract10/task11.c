@@ -29,7 +29,7 @@ void asc(char sarr0[N][SIZE]) {
 
 // ascending by length
 void asc_len(char sarr0[N][SIZE]) {
-  char sarr[N][SIZE];
+  char sarr[N][SIZE] = {0};
   char temp[SIZE];
   for (int i=0; i<N; i++) strcpy(sarr[i], sarr0[i]);
   
@@ -113,7 +113,7 @@ void menu() {
 }
 
 int main () {
-  char strings[N][SIZE];
+  char strings[N][SIZE] = {0};
   int choice=0, code=0;
   
   puts("To start enter strings below. Max numbers of string is 10.\n"
