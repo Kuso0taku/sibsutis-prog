@@ -4,6 +4,7 @@
 int main() {
   int cnt_w=0, cnt_up=0, cnt_low=0, cnt_pnc=0, cnt_dgt=0;
   char ch;
+  puts("Enter smth below (end of file to exit):");
   while ((ch=getchar()) != EOF) {
     if (isdigit(ch)) cnt_dgt++;
     else if (islower(ch)) cnt_low++;
