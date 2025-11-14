@@ -59,12 +59,12 @@ int main() {
           while (getchar()!='\n');
         }
 
-        printf("Number of elements multiple of %d: %d\n", 
+        printf("Number of elements multiple of %d: %lu\n", 
                k, cnt_mltpl_k(arr, n, k));
         break;
       }
       case 3: {
-        printf("Number of elements greater than average value of the array: %d\n", 
+        printf("Number of elements greater than average value of the array: %lu\n", 
                cnt_avg_grt(arr, n));
         break;
       }
