@@ -17,7 +17,7 @@ void print_arr_ptr(int *arrptr, size_t n) {
 
 // prints (value, address) of array
 void print_arr_vp(int *arrptr, size_t n) {
-  putchar('{')
+  putchar('{');
   for (size_t i=0; i<n-1; i++) printf("(%d, %p); ", *(arrptr+i), (arrptr+i));
   printf("(%d, %p)}\n", *(arrptr+n-1), (arrptr+n-1));
 }
