@@ -1,14 +1,15 @@
+#include <stdio.h>
 #include "myarrfunc.h"
 
 // prints values of array
 void print_arr_val(int *arrptr, size_t n) {
-  putchar("{");
+  putchar('{');
   for (size_t i=0; i<n-1; i++) printf("%d, ", *(arrptr+i));
   printf("%d}\n", *(arrptr+n-1));
 }
 // prints addresses of array
 void print_arr_ptr(int *arrptr, size_t n) {
-  putchar("{");
+  putchar('{');
   for (size_t i=0; i<n-1; i++) printf("%p, ", (arrptr+i));
   printf("%p}\n", (arrptr+n-1));
 }
