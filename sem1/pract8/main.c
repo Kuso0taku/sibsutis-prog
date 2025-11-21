@@ -3,24 +3,25 @@
 #include "myarrfunc.h"
 
 int main() {
-  int choice=0, k=0, ch=0;
-  int m=0;
+  int choice=0, k=0, ch=0, m=0, code=0;
   do {
     // init size of array
     int n=0;
     printf("Enter array length: ");
-    while(scanf("%d", &n) != 1 || n<=0) {
+    while((code=scanf("%d", &n)) != 1 || n<=0) {
+      while ((ch=getchar())!='\n') 
+        if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
       printf("Wrong input! The num must be >= 0! Enter correct value here: ");
-      while (getchar()!='\n');
     }
   
     // init array
     int arr[n];
     for (int i=0; i<n; i++) {
       printf("Enter the %d element: ", i+1);
-      while(scanf("%d", arr+i) != 1) {
+      while((code=scanf("%d", arr+i)) != 1) {
+        while ((ch=getchar())!='\n') 
+          if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
         printf("Wrong input! Enter correct value here: ");
-        while (getchar()!='\n');
       }
     }
   
@@ -41,10 +42,11 @@ int main() {
 
     // reads choice
     printf("Enter your choice: ");
-    while(scanf("%d", &choice) != 1 || choice<1 || choice>7) {
+    while((code=scanf("%d", &choice)) != 1 || choice<1 || choice>7) {
+      while ((ch=getchar())!='\n') 
+        if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
       printf("Wrong input! The input must be a number from 1 to 7!\n"
              "Enter correct value here: ");
-      while (getchar()!='\n');
     }
     
     // choice processing
@@ -69,10 +71,11 @@ int main() {
       case 5: {
         //reads k 
         printf("Enter k here: ");
-        while(scanf("%d", &k) != 1 || k>m) {
+        while((code=scanf("%d", &k)) != 1 || k>m) {
+          while ((ch=getchar())!='\n') 
+            if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
           printf("Wrong input! The k must be <= max value of the array (%d)!"
                  "\nEnter correct value here: ", m);
-          while (getchar()!='\n');
         }
 
         printf("Number of elements multiple of %d: %lu\n", 
@@ -87,15 +90,17 @@ int main() {
     }
     
     // clears buffer from all inputs
-    while (getchar()!='\n');
+    while ((ch=getchar())!='\n') if (ch==EOF) break;
 
     // continue
     printf("Do you want to continue? (Y/n): ");
     ch=tolower(getchar());
-    if (ch=='n') choice=6;
-    if (ch!='\n') while (getchar()!='\n');
+    if (ch=='n') choice=7;
+    if (ch!='\n') 
+      while ((ch=getchar())!='\n') 
+        if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
     putchar('\n');
-  } while (choice != 6);
+  } while (choice != 7);
   puts("Done.");
 
   return 0;
