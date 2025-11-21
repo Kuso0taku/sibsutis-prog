@@ -2,6 +2,7 @@
 
 void print_arr_val(int *arrptr, size_t n); // prints values of array 
 void print_arr_ptr(int *arrptr, size_t n); // prints addresses of array
+void print_arr_vp(int *arrptr, size_t n); // prints (value, address) of array
 int fnd_lst_pstv(int *arrptr, size_t n); // finds last positive element
 int fnd_max(int *arrptr, size_t n); // finds max element
 size_t cnt_mltpl_k(int *arrptr, size_t n, int k); // counts elements multiple of k
