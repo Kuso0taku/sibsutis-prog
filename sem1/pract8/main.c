@@ -31,23 +31,24 @@ int main() {
     putchar('\n');
     puts("(1) Print values of array elements");
     puts("(2) Print addresses of array elements");
-    puts("(3) Find last positive element");
-    puts("(4) Count elements multiple of k");
-    puts("(5) Count elements greater than average value of the array");
-    puts("(6) Exit");
+    puts("(3) Print (value, address) of array elements");
+    puts("(4) Find last positive element");
+    puts("(5) Count elements multiple of k");
+    puts("(6) Count elements greater than average value of the array");
+    puts("(7) Exit");
     for (int i=0; i<35; i++) putchar('*');
     putchar('\n');
 
     // reads choice
     printf("Enter your choice: ");
-    while(scanf("%d", &choice) != 1 || choice<1 || choice>6) {
-      printf("Wrong input! The input must be a number from 1 to 4!\n"
+    while(scanf("%d", &choice) != 1 || choice<1 || choice>7) {
+      printf("Wrong input! The input must be a number from 1 to 7!\n"
              "Enter correct value here: ");
       while (getchar()!='\n');
     }
     
     // choice processing
-    if (choice==6) break;
+    if (choice==7) break;
     switch (choice) {
       case 1: {
         print_arr_val(arr, n);
@@ -58,10 +59,14 @@ int main() {
         break;
       }
       case 3: {
-        printf("The last positive elements: %d\n", fnd_lst_pstv(arr, n));
+        print_arr_vp(arr, n);
         break;
       }
       case 4: {
+        printf("The last positive elements: %d\n", fnd_lst_pstv(arr, n));
+        break;
+      }
+      case 5: {
         //reads k 
         printf("Enter k here: ");
         while(scanf("%d", &k) != 1 || k>m) {
@@ -74,7 +79,7 @@ int main() {
                k, cnt_mltpl_k(arr, n, k));
         break;
       }
-      case 5: {
+      case 6: {
         printf("Number of elements greater than average value of the array: %lu\n", 
                cnt_avg_grt(arr, n));
         break;
