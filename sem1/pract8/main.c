@@ -90,7 +90,7 @@ int main() {
     }
     
     // clears buffer from all inputs
-    while ((ch=getchar())!='\n') if (ch==EOF) break;
+    while (getchar()!='\n');
 
     // continue
     printf("Do you want to continue? (Y/n): ");
