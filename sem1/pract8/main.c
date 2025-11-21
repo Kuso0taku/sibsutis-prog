@@ -26,7 +26,7 @@ int main() {
     }
   
     putchar('\n');
-    m=fnd_max(arr, n);
+
     // prints menu
     for (int i=0; i<35; i++) putchar('*');
     putchar('\n');
@@ -69,7 +69,8 @@ int main() {
         break;
       }
       case 5: {
-        //reads k 
+        //reads k
+        m=fnd_max(arr, n);
         printf("Enter k here: ");
         while((code=scanf("%d", &k)) != 1 || k>m) {
           while ((ch=getchar())!='\n') 
