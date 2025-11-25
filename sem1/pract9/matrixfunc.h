@@ -4,7 +4,7 @@
 void stdin_matrix(int matrix[COL][ROW]);
 // prints matrix of values with specified indeces
 void stdout_matrix(int matrix[COL][ROW]);
-// prints indices elements whose values are greater than the given k
+// prints indices elements whose values are greater than the given k from m column to l
 void find_grtrk_m_l(int matrix[COL][ROW], int k, int m, int l);
 // the sum of all elements that are multiple of k
 int sum_mltk(int matrix[COL][ROW], int k);

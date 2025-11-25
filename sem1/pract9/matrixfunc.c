@@ -22,14 +22,14 @@ void stdout_matrix(int matrix[COL][ROW]) {
     putchar('\n');
   }
 }
-// prints indices elements whose values are greater than the given k
+// prints indices elements whose values are greater than the given k from m column to l
 void find_grtrk_m_l(int matrix[COL][ROW], int k, int m, int l) {
-  printf("matrix[i][j] > %d; j indeces:  ", k);
+  printf("matrix[i][j] > %d; (i, j) indeces:  ", k);
   int *ptr = &matrix[0][0];
   for (int i=m; i<=l; i++) {
-    for (int j=0; j<ROW; j++) printf("%d ", *(ptr+i*COL+j));
+    for (int j=0; j<ROW; j++) if (*(ptr+i*COL+j) > k) printf("(%d, %d) ", i, j);
+    putchar('\n');
   }
-  putchar('\n');
 }
 // the sum of all elements that are multiple of k
 int sum_mltk(int matrix[COL][ROW], int k) {
