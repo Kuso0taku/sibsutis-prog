@@ -1,6 +1,24 @@
 #include <stdio.h>
 #include "matrixfunc.h"
 
+// interactive input matrix from keyboard
+int input_matrix(int matrix[COL][ROW]){
+  int *ptr = &matrix[0][0];
+  int ch=0, code=0;
+  for (int i=0; i<COL; i++) {
+    for (int j=0; j<ROW; j++, ptr++) {
+      printf("Enter matrix[%d][%d] element: ", i, j);
+      while((code=scanf("%d", ptr)) != 1) {
+        while ((ch=getchar())!='\n') 
+          if (ch==EOF) {puts("\nError: End-Of-File."); return EOF;}
+        printf("Wrong input! Element must be int!\n"
+               "Enter correct value here: ");
+      }
+    }
+  }
+  return 0;
+}
+
 // left-to-right row-based input from file <
 void stdin_matrix(int matrix[COL][ROW]) {
   int cols=0, ch=0;
@@ -24,7 +42,7 @@ void stdout_matrix(int matrix[COL][ROW]) {
 }
 // prints indices elements whose values are greater than the given k from m column to l
 void find_grtrk_m_l(int matrix[COL][ROW], int k, int m, int l) {
-  printf("matrix[i][j] > %d; (i, j) indeces:  ", k);
+  printf("matrix[i][j] > %d; (i, j) indeces:\n", k);
   int *ptr = &matrix[0][0];
   for (int i=m; i<=l; i++) {
     for (int j=0; j<ROW; j++) if (*(ptr+i*COL+j) > k) printf("(%d, %d) ", i, j);

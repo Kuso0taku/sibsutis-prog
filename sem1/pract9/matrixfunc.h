@@ -1,5 +1,7 @@
 #define COL 10
 #define ROW 10
+// interactive input matrix from keyboard
+int input_matrix(int matrix[COL][ROW]);
 // left-to-right row-based input from file <
 void stdin_matrix(int matrix[COL][ROW]);
 // prints matrix of values with specified indeces
