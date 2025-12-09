@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
     fputws(L"\t 2 - inserts exclemation mark in the end of lines\n", stdout);
     fputws(L"\t 3 - finds and counts words with dashes\n", stdout);
     fputws(L"\t 4 - inserts 'с' after vowel and repeats vowel\n", stdout);
-    fputws(L"\nUsage:\n\t./main 1 < in > out\n\tor\n\t./main 1\n", stdout);
+    fputws(L"\nUsage:\n\t./program 1 < in > out\n\tor\n\t./program 1\n", stdout);
     return 1;
   }
 
