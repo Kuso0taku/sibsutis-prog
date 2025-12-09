@@ -8,6 +8,7 @@
 #define N_CHS (N_ASCII + N_RU + N_SPEC)
 
 _Bool wisspace(wchar_t wch); // works like iswspace
+_Bool cmp(char word1[], char word2[]); // compare two words
 size_t cnt_chs(wchar_t text[BUFFER_SIZE]); // counts how many every character
 void ins_exclm_mark(wchar_t text[BUFFER_SIZE]); // inserts exclemation mark in the end of lines
 size_t cnt_dash_wrds(wchar_t text[BUFFER_SIZE]); // finds and counts words with dashes

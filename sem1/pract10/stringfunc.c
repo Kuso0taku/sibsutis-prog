@@ -5,6 +5,14 @@ _Bool wisspace(wchar_t wch) {
   return wch==L' ' || wch==L'\t' || wch==L'\n';
 }
 
+// compare two words 
+_Bool cmp(char word1[], char word2[]) {
+  for (size_t i=0; *(word1+i)!='\0' && *(word2+i)!='\0'; i++) {
+    if (*(word1+i) != *(word2+i)) return 0;
+  }
+  return 1;
+}
+
 // counts how many every character
 size_t cnt_chs(wchar_t text[BUFFER_SIZE]) {
   size_t cnt_a=0;
@@ -40,9 +48,9 @@ size_t cnt_chs(wchar_t text[BUFFER_SIZE]) {
           case (N_CHS-7): ch=L'ё'; break;
           case (N_CHS-6): ch=L'Ё'; break;
           case (N_CHS-5): 
-            ch=L'\t'; wprintf(L"'\\t': %lu\t", (wint_t)ch, *(cnts+i)); break;
+            ch=L'\t'; wprintf(L"'\\t': %lu\t", *(cnts+i)); break;
           case (N_CHS-4): 
-            ch=L'\n'; wprintf(L"'\\n': %lu\t", (wint_t)ch, *(cnts+i)); break;
+            ch=L'\n'; wprintf(L"'\\n': %lu\t", *(cnts+i)); break;
           case (N_CHS-3): ch=L'‐'; break;
           case (N_CHS-2): ch=L'–'; break;
           case (N_CHS-1): ch=L'—'; break;
