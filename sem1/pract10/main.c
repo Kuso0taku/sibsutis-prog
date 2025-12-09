@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]) {
   setlocale(LC_ALL, "");
   
-  if (argc != 2 && argc != 6 ||
+  if ((argc != 2 && argc != 6) ||
     (cmp(argv[1], "1") && cmp(argv[1], "2") &&
     cmp(argv[1], "3") && cmp(argv[1], "4")) ||
     (argc==6 && (cmp(argv[2], "<") || cmp(argv[4], ">"))))
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   wchar_t buffer[BUFFER_SIZE] = {0};
   for (size_t i=0; i<BUFFER_SIZE; i++) {
     *(buffer+i) = getwchar();
-    if (*(buffer+i) == WEOF) *(buffer+i) = L'\0';
+    if ((wint_t)*(buffer+i) == WEOF) *(buffer+i) = L'\0';
   }
   *(buffer+BUFFER_SIZE-1)=L'\0';
   
