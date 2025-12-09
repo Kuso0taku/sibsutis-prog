@@ -27,4 +27,8 @@ but you should use **comments** in the code to indicate the function assignment.
 - [x] **7** - inserts an exclamation mark at the end of each line of text.  
 - [x] **6** - finds words with dashes in the entered text.
 - [x] **3** - After each vowel, the letter 'c' is inserted and the vowel is repeated.  
-&nbsp; Example (for **3**): `кот -> косот.`
+&nbsp; Example (for **3**): `кот -> косот.`  
+  
+### See also
+- back to [readme](./readme.md)  
+- or see [usage](./usage.md)  
