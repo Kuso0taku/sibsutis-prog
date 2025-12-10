@@ -20,7 +20,7 @@ or just run `make` in your console if you already have this repo.
 **OR**
 2. `./program 1`  
 **OR**
-3. `./program 1 < in`
+3. `./program 1 < in`  
 **OR**
 4. `/program 1 > out`
 
