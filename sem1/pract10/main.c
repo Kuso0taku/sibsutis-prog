@@ -8,14 +8,15 @@ int main(int argc, char *argv[]) {
   if ((argc != 2 && argc != 6) ||
     (cmp(argv[1], "1") && cmp(argv[1], "2") &&
     cmp(argv[1], "3") && cmp(argv[1], "4")) ||
-    (argc==6 && (cmp(argv[2], "<") || cmp(argv[4], ">"))))
+    (argc==6 && (!cmp(argv[2], "<") || !cmp(argv[4], ">"))))
   {
     fputws(L"Commands:\n", stdout);
     fputws(L"\t 1 - count how many every character\n", stdout);
     fputws(L"\t 2 - inserts exclemation mark in the end of lines\n", stdout);
     fputws(L"\t 3 - finds and counts words with dashes\n", stdout);
     fputws(L"\t 4 - inserts 'с' after vowel and repeats vowel\n", stdout);
-    fputws(L"\nUsage:\n\t./program 1 < in > out\n\tor\n\t./program 1\n", stdout);
+    fputws(L"\nUsage:\n\t./program 1 < in > out\n\tor\n\t./program 1\n\tor", stdout);
+    fputws(L"\n\t./program 1 < in\n\tor\n\t./program 1 > out", stdout);
     return 1;
   }
 

@@ -19,11 +19,17 @@ or just run `make` in your console if you already have this repo.
 1. `./program 1 < in > out`  
 **OR**
 2. `./program 1`  
+**OR**
+3. `./program 1 < in`
+**OR**
+4. `/program 1 > out`
 
 ### Explanation
 The *number* **after** *program* is a *command*.  
 1. The **first** way is using **streams**. It means you can input **from** file using `<` and `>` **to** file. Content in `out` will have rewrited. Or created new one (if `out` doesn't exist).  
 2. The **second** way is "regular" way to run it. Which means using program **interactively** (just by typing in console from your keyboard). **IMPORTANT**: to stop input you need to send your console **EOF** (End-of-file) signal! Regularly for *Linux* and *MacOs* it's **Ctrl+D**, but for *Windows* it's **Ctrl+Z**.  
+3. The **third** way like the **first** one but with *only* input stream. It means you input from file using istream and result of the program will just appear in your console as it happens in the **second** one.  
+4. The **forth** way exactly like **third** one but instead of input stream, output stream. And you'll be able to input from your keyboard interactively.  
 
 ### Uninstallation  
 to remove all files have made open your console and just run:  
