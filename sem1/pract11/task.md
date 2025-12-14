@@ -5,7 +5,7 @@ The `main.c`, contains the `int main` function
 and includes the `structfunc.h` header file.
 **Streams** were also used for input and output.
 
-Example of running the funcion: `./main < in > out`  
+Example of running the funcion: `./program < in > out`  
 
 ### Sub-tasks
 
@@ -20,3 +20,4 @@ Example of running the funcion: `./main < in > out`
 
 ### See also
 - back to [readme](./readme.md)  
+- how to [use](./usage.md)  
