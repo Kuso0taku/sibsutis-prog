@@ -20,4 +20,3 @@ Example of running the funcion: `./program < in > out`
 
 ### See also
 - back to [readme](./readme.md)  
-- how to [use](./usage.md)  
