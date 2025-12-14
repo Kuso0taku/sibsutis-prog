@@ -1,9 +1,9 @@
 # Task  
 Create a structfunc.h and structfunc.c file to implement
 The structure and functions for processing it are described below.
-The main file, main.c, contains the int main function
-and includes the structfunc.h header file.
-Streams were also used for input and output.
+The `main.c`, contains the `int main` function
+and includes the `structfunc.h` header file.
+**Streams** were also used for input and output.
 
 Example of running the funcion: `./main < in > out`  
 
