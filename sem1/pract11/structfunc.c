@@ -16,13 +16,13 @@ wint_t input(wchar_t str[STR_SIZE]) {
 
 // input  struct
 wint_t setter(struct Game *ptr) {
-  fputws(L"Enter game genre: ", stdout);
+  //fputws(L"Enter game genre: ", stdout);
   if (input(ptr->genre) == WEOF) return -1;
-  fputws(L"Enter game developer: ", stdout);
+  //fputws(L"Enter game developer: ", stdout);
   if (input(ptr->dev) == WEOF) return -1;
-  fputws(L"Enter game platform: ", stdout);
+  //fputws(L"Enter game platform: ", stdout);
   if (input(ptr->platform) == WEOF) return -1;
-  fputws(L"Enter game realese date: ", stdout);
+  //fputws(L"Enter game realese date: ", stdout);
   if (input(ptr->date) == WEOF) return -1;
   return 0;
 }
