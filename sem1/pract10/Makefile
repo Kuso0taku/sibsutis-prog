@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Wall -Wextra -fexec-charset=UTF-8 -fextended-identifiers -finput-charset=UTF-8 -std=c11
+CFLAGS=-Wall -Wextra -fextended-identifiers -std=c11
 LDFLAGS=
 SOURCES=stringfunc.c main.c
 OBJECTS=$(SOURCES:.c=.o)
