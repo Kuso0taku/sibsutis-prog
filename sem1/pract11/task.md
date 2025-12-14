@@ -16,7 +16,7 @@ Example of running the funcion: `./main < in > out`
 5. The result of the program is the output of 10 entered values to the file via `>`.
 
 ### Var 7
-- Creating a structure for storing data about tourist routes (cities, attractions, distances between cities, transportation).
+- Creating a structure for storing data about computer games (genre, developer, platform, release date).
 
 ### See also
 - back to [readme](./readme.md)  
