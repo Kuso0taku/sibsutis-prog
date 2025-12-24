@@ -41,6 +41,21 @@ wchar_t *rmwvowel(wchar_t *wstr, size_t len) {
   return wstr;
 }
 
+// task4
+size_t min_suffix(wchar_t *wstr, size_t len) {
+  wchar_t wch=0;
+  size_t min=BUF_SIZE, cnt=-1;
+  _Bool f=0; // flag if L'.' was found
+  for (size_t i=0; i<len && *(wstr+i)!=WEOF && *(wstr+i)!=L'\0'; i++) {
+    wch = *(wstr+i);
+    if (wch == L'.') f=1
+    else if (iswspace(wch)) {f=0; min = (min>cnt && cnt>0) ? cnt : min; cnt=-1;}
+    if (f) cnt++;
+  }
+  if (min==BUF_SIZE) return 0;
+  return min;
+}
+
 int main () {
   setlocale(LC_ALL, "");
 
@@ -72,5 +87,13 @@ int main () {
   *(buffer+len) = L'\0';
   wprintf(L"out: %ls\n", rmwvowel(buffer, len));
 
+  // task4
+  len=0;
+  fputws(L"\nTask #4\nin: ", stdout);
+  for (; len<BUF_SIZE && (ch=getwchar())!=WEOF && ch!=L'\n'; len++) 
+    *(buffer+len)=ch;
+  if (len<BUF_SIZE) len++;
+  *(buffer+len) = L'\0';
+  wprintf(L"out: %lu\n", min_suffix(buffer, len));
   return 0;
 }
