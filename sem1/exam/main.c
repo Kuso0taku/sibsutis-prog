@@ -4,6 +4,7 @@
 # include <wctype.h> // for iswspace, towlower
 # include <math.h> // pow
 #define N 10 // 1D array size
+#define M 6 // 2D array size
 #define BUF_SIZE 255
 
 // task1
@@ -48,12 +49,71 @@ size_t min_suffix(wchar_t *wstr, size_t len) {
   _Bool f=0; // flag if L'.' was found
   for (size_t i=0; i<len && *(wstr+i)!=WEOF && *(wstr+i)!=L'\0'; i++) {
     wch = *(wstr+i);
-    if (wch == L'.') f=1
+    if (wch == L'.') f=1;
     else if (iswspace(wch)) {f=0; min = (min>cnt && cnt>0) ? cnt : min; cnt=-1;}
     if (f) cnt++;
   }
   if (min==BUF_SIZE) return 0;
   return min;
+}
+
+// task5
+size_t max_asc_seq(wchar_t *wstr, size_t len) {
+  if (len==0) return 0;
+  wchar_t wchs=0, wche=0; // start and end wide-chars
+  size_t max=1, cnt=1;
+  for (size_t i=0; i<len && *(wstr+i)!=WEOF && *(wstr+i)!=L'\0'; i++) {
+    wchs = *(wstr+i);
+    for (size_t j=i+i; j<len && *(wstr+j)!=WEOF && *(wstr+j)!=L'\0'; j++) {
+      wche = *(wstr+j);
+      if (wche <= wchs) cnt++;
+      else max = (max<cnt && cnt>0) ? cnt : max;
+    }
+    cnt=1;
+  }
+  if (max==BUF_SIZE) return 1;
+  return max;
+}
+
+// task6 
+void arr_spiral(int A[M][M], size_t n, size_t m) {
+  size_t top=0, bottom = n-1;
+  size_t left=0, right = m-1;
+  int code=0;
+  wchar_t ch=0;
+  while (top<=bottom && left<=right) {
+    for (size_t i=left; i<=right; i++) {
+      while ((code=wscanf(L"%d", *(A+top)+i))!=1)
+        while (!iswspace(ch=getwchar())) if (ch==WEOF) return ;
+    }
+    top++;
+    
+    if (top <= bottom) {
+      for (size_t i=top; i<=bottom; i++) {
+        while ((code=wscanf(L"%d", *(A+i)+right))!=1) 
+          while (!iswspace(ch=getwchar())) if (ch==WEOF) return ;
+      }
+      right--;
+    }
+    
+    if (top <= bottom && left <= right) {
+      for (size_t i=right; i>=left; i--) {
+        while ((code=wscanf(L"%d", *(A+bottom)+i))!=1) 
+          while (!iswspace(ch=getwchar())) if (ch==WEOF) return ;
+        if (i==0) break;
+      }
+      bottom--;
+    }
+
+    if (left <= right && top <= bottom) {
+      for (size_t i=bottom; i>=top; i--) {
+        while ((code=wscanf(L"%d", *(A+i)+left))!=1) 
+          while (!iswspace(ch=getwchar())) if (ch==WEOF) return ;
+        if (i==0) break;
+      }
+      left++;
+    }
+  }
 }
 
 int main () {
@@ -74,7 +134,8 @@ int main () {
   int A[N] = {0};
   fputws(L"\nTask #2\nin: ", stdout);
   for (size_t i=0; i<N; i++)
-    while ((code=wscanf(L"%d", (A+i)))!=1) while (!iswspace(ch=getwchar()));
+    while ((code=wscanf(L"%d", (A+i)))!=1) 
+      while (!iswspace(ch=getwchar())) if (ch==WEOF) return -1;
   while (!iswspace(ch=getwchar()));
   wprintf(L"out: %d\n", sum_odd(A, N));
 
@@ -95,5 +156,26 @@ int main () {
   if (len<BUF_SIZE) len++;
   *(buffer+len) = L'\0';
   wprintf(L"out: %lu\n", min_suffix(buffer, len));
+
+  // task5
+  len=0;
+  fputws(L"\nTask #5\nin: ", stdout);
+  for (; len<BUF_SIZE && (ch=getwchar())!=WEOF && ch!=L'\n'; len++) 
+    *(buffer+len)=ch;
+  if (len<BUF_SIZE) len++;
+  *(buffer+len) = L'\0';
+  wprintf(L"out: %lu\n", max_asc_seq(buffer, len));
+
+  // task6 
+  int B[M][M] = {{0}};
+  fputws(L"\nTask #6\nin: ", stdout);
+  arr_spiral(B, M, M);
+  fputws(L"out:\n", stdout);
+  for (size_t i=0; i<M; i++) {
+    for (size_t j=0; j<M; j++) 
+      wprintf(L"%2d ", *(*(B+i)+j));
+    putwchar(L'\n');
+  }
+
   return 0;
 }
