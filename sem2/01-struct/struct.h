@@ -27,6 +27,7 @@ void matrix2d_random(Matrix2D*, float, float);
 Matrix2D* matrix2d_get_row(Matrix2D*, size_t);
 Matrix2D* matrix2d_get_col(Matrix2D*, size_t);
 float matrix2d_determinant(Matrix2D*);
+float _determinant(const float*, size_t, size_t);
 // grade "Excellent"
 Matrix2D* matrix2d_inverse(Matrix2D*);
 
