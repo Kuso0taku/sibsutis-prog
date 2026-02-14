@@ -1,9 +1,9 @@
 #include <wchar.h>
-#include <stdlib.h> // malloc, free
+#include <stdlib.h> // malloc, free, rand(), srand(), RAND_MAX
 #include <string.h> // memcpy
 #include <math.h> // for fabs
+#include <time.h> // for time() - seed for srand()
 #include "struct.h"
-
 
 // memory methods
 Matrix2D *matrix2d_construct_default() {
@@ -12,8 +12,7 @@ Matrix2D *matrix2d_construct_default() {
   return matrix;
 }
 
-Matrix2D *matrix2d_construct(Matrix2D* matrix, const size_t n, const size_t m, 
-                             const float* arr) {
+Matrix2D *matrix2d_construct(Matrix2D* matrix, size_t n, size_t m, const float* arr) {
   if (matrix->rows * matrix->cols != n*m) {
     free(matrix->data);
     matrix->data = (float*)malloc(n*m * sizeof(float));
@@ -121,22 +120,24 @@ void matrix2d_wprintf(Matrix2D* matrix) {
   wprintf(L"\n}\n");
 }
 
+void matrix2d_increment(Matrix2D* matrix) {
+  for (size_t i=0; i < matrix->rows * matrix->cols; i++) (*(matrix->data+i))++;
+}
+
+void matrix2d_decrement(Matrix2D* matrix) {
+  for (size_t i=0; i < matrix->rows * matrix->cols; i++) (*(matrix->data+i))--;
+}
+
+void matrix2d_setter(Matrix2D* matrix, size_t row, size_t col, float value) {
+  *(matrix->data + row * matrix->cols + col) = value;
+}
+
+void matrix2d_random(Matrix2D* matrix, float min, float max) {
+  srand(time(NULL)); // make seed for random number
+  for (size_t i=0; i < matrix->rows * matrix->cols; i++) 
+       *(matrix->data+i) = min + (float)rand() / RAND_MAX * (max-min);
+}
 /*
-void matrix2d_increment(Matrix2D*) {
-
-}
-
-void matrix2d_decrement(Matrix2D*) {
-
-}
-
-void matrix2d_setter(Matrix2D*) {
-
-}
-
-void matrix2d_random(Matrix2D*) {
-
-}
 
 // grade "Good"
 float* matrix2d_get_row(Matrix2D*) {
