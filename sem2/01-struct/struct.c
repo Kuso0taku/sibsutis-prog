@@ -137,27 +137,45 @@ void matrix2d_random(Matrix2D* matrix, float min, float max) {
   for (size_t i=0; i < matrix->rows * matrix->cols; i++) 
        *(matrix->data+i) = min + (float)rand() / RAND_MAX * (max-min);
 }
-/*
 
 // grade "Good"
-float* matrix2d_get_row(Matrix2D*) {
+Matrix2D* matrix2d_get_row(Matrix2D* matrix, size_t row) {
+  float *arr = (float*)malloc(matrix->cols * sizeof(float));
+  for (size_t i=0; i < matrix->cols; i++) {
+    *(arr+i) = *(matrix->data + matrix->cols * row + i);
+  }
 
+  Matrix2D* m = matrix2d_construct_default();
+  matrix2d_construct(m, 1, matrix->cols, arr);
+
+  free(arr);
+  return m;
 }
 
-float* matrix2d_get_col(Matrix2D*) {
+Matrix2D* matrix2d_get_col(Matrix2D* matrix, size_t col) {
+  float *arr = (float*)malloc(matrix->rows * sizeof(float));
+  for (size_t i=0; i < matrix->rows; i++) {
+    *(arr+i) = *(matrix->data + i * matrix->cols + col);
+  }
 
+  Matrix2D* m = matrix2d_construct_default();
+  matrix2d_construct(m, matrix->rows, 1, arr);
+
+  free(arr);
+  return m;
 }
 
-float matrix2d_determinant(Matrix2D*) {
+/*
+float matrix2d_determinant(Matrix2D* matrix) {
 
 }
 
 // grade "Excellent"
-Matrix2D* matrix2d_inverse(Matrix2D*) {
+Matrix2D* matrix2d_inverse(Matrix2D* matrix) {
 
 }
-
 */
+
 // some cmp funcs
 _Bool matrix2d_eql(Matrix2D* m1, Matrix2D* m2) {
   return matrix2d_cmp(m1, m2) == 0;
@@ -182,10 +200,3 @@ _Bool matrix2d_less(Matrix2D* m1, Matrix2D* m2) {
 _Bool matrix2d_less_or_eql(Matrix2D* m1, Matrix2D* m2) {
   return matrix2d_cmp(m1, m2) <= 0;
 }
-
-/*
-// other
-void menu() {
-
-}
-*/
