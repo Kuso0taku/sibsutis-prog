@@ -31,12 +31,12 @@ float matrix2d_determinant(Matrix2D*);
 Matrix2D* matrix2d_inverse(Matrix2D*);
 
 // some cmp funcs
-_Bool eql(Matrix2D*, Matrix2D*);
-_Bool not_eql(Matrix2D*, Matrix2D*);
-_Bool grtr(Matrix2D*, Matrix2D*);
-_Bool grtr_or_eql(Matrix2D*, Matrix2D*);
-_Bool less(Matrix2D*, Matrix2D*);
-_Bool less_or_eql(Matrix2D*, Matrix2D*);
+_Bool matrix2d_eql(Matrix2D*, Matrix2D*);
+_Bool matrix2d_not_eql(Matrix2D*, Matrix2D*);
+_Bool matrix2d_grtr(Matrix2D*, Matrix2D*);
+_Bool matrix2d_grtr_or_eql(Matrix2D*, Matrix2D*);
+_Bool matrix2d_less(Matrix2D*, Matrix2D*);
+_Bool matrix2d_less_or_eql(Matrix2D*, Matrix2D*);
 
 // other
 void menu();
