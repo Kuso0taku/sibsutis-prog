@@ -22,7 +22,7 @@ void matrix2d_wprintf(Matrix2D*);
 void matrix2d_increment(Matrix2D*);
 void matrix2d_decrement(Matrix2D*);
 void matrix2d_setter(Matrix2D*, const size_t, const size_t, float);
-void matrix2d_random(Matrix2D*);
+void matrix2d_random(Matrix2D*, float, float);
 // grade "Good"
 float* matrix2d_get_row(Matrix2D*, const size_t);
 float* matrix2d_get_col(Matrix2D*, const size_t);
