@@ -35,3 +35,6 @@ _Bool grtr(float, float);
 _Bool grtr_or_eql(float, float);
 _Bool less(float, float);
 _Bool less_or_eql(float, float);
+
+// other
+void menu();
