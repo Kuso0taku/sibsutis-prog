@@ -16,7 +16,7 @@ void matrix2d_destruct(Matrix2D*);
 
 // matrix2d methods
 // grade "Satisfactory"
-_Bool matrix2d_cmp(Matrix2D*, Matrix2D*, _Bool (*cmp)(float, float));
+int matrix2d_cmp(Matrix2D*, Matrix2D*);
 int matrix2d_wscanf(Matrix2D*);
 void matrix2d_wprintf(Matrix2D*);
 void matrix2d_increment(Matrix2D*);
@@ -31,12 +31,12 @@ float matrix2d_determinant(Matrix2D*);
 Matrix2D* matrix2d_inverse(Matrix2D*);
 
 // some cmp funcs
-_Bool eql(float, float);
-_Bool not_eql(float, float);
-_Bool grtr(float, float);
-_Bool grtr_or_eql(float, float);
-_Bool less(float, float);
-_Bool less_or_eql(float, float);
+_Bool eql(Matrix2D*, Matrix2D*);
+_Bool not_eql(Matrix2D*, Matrix2D*);
+_Bool grtr(Matrix2D*, Matrix2D*);
+_Bool grtr_or_eql(Matrix2D*, Matrix2D*);
+_Bool less(Matrix2D*, Matrix2D*);
+_Bool less_or_eql(Matrix2D*, Matrix2D*);
 
 // other
 void menu();
