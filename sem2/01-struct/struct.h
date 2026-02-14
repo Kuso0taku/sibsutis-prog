@@ -1,5 +1,7 @@
 #include <stddef.h> // for size_t
 
+#define EPS = 1e-9; // for float comparing
+
 typedef struct {
   size_t rows;
   size_t cols;
