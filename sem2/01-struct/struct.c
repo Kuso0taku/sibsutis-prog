@@ -1,4 +1,6 @@
-//#include <stdio.h>
+#include <wchar.h>
+#include <stdlib.h> // malloc, free
+#include <string.h> // memcpy
 #include "struct.h"
 
 
@@ -21,7 +23,7 @@ Matrix2D *matrix2d_construct(Matrix2D* matrix, const size_t n, const size_t m,
   return matrix;
 }
 
-Matrix2D *matrix2d_copy_construct(Matrix2D* dst, Matrix2D* src) {
+Matrix2D *matrix2d_construct_copy(Matrix2D* dst, Matrix2D* src) {
   if (src->data == NULL) dst->data = NULL;
   if (dst->rows * dst->cols != src->rows * src->cols) {
     free(dst->data);
@@ -48,15 +50,68 @@ void matrix2d_destruct(Matrix2D* matrix) {
 _Bool matrix2d_cmp(Matrix2D*, Matrix2D*, _Bool (*cmp)(float, float)) {
 
 }
+*/
+int matrix2d_wscanf(Matrix2D* matrix) {
+  size_t n=0, m=0;
+  int code=0;
+  
+  wprintf(L"Enter the number of rows: ");
+  while ((code = wscanf(L"%zu", &n))!=1) {
+    if (code == WEOF) {
+      wprintf(L"WEOF ERROR! ABORTING.\n");
+      return -1;
+    }
+    while (getwchar() != L'\n');
+    wprintf(L"Invalid input! Try again: ");
+  }
 
-int matrix2d_scanf(Matrix2D*) {
+  wprintf(L"Enter the number of cols: ");
+  while ((code = wscanf(L"%zu", &m))!=1) {
+    if (code == WEOF) {
+      wprintf(L"WEOF ERROR! ABORTING.\n");
+      return -1;
+    }
+    while (getwchar() != L'\n');
+    wprintf(L"Invalid input! Try again: ");
+  }
 
+  float* arr = (float*)malloc(n*m * sizeof(float));
+  wprintf(L"Enter %zu elements of matrix here:\n", n*m);
+  for (size_t i=0; i<n*m; i++) {
+    wprintf(L"Element [%zu][%zu]: ", i/m, i%m);
+    while ((code = wscanf(L"%f", arr+i))!=1) {
+      if (code == WEOF) {
+        wprintf(L"WEOF ERROR! ABORTING.\n");
+        return -1;
+      }
+      while (getwchar() != L'\n');
+      wprintf(L"Invalid input! Try again: ");
+    }
+  }
+  
+  matrix2d_construct(matrix, n, m, arr);
+  free(arr);
+  matrix->rows = n;
+  matrix->cols = m;
+
+  return 0;
 }
 
-void matrix2d_printf(Matrix2D*) {
-
+void matrix2d_wprintf(Matrix2D* matrix) {
+  wprintf(L"rows: %zu\ncols: %zu\n", matrix->rows, matrix->cols);
+  wprintf(L"{\n  ");
+  for (size_t i=0; i<matrix->rows; i++) {
+    putwchar(L'{');
+    for (size_t j=0; j<matrix->cols-1; j++) {
+      wprintf(L"%.2f, ", *(matrix->data+(i*matrix->cols)+j));
+    }
+    wprintf(L"%.2f}", *(matrix->data+(i*matrix->cols)+(matrix->cols-1)));
+    if (i < matrix->rows - 1) wprintf(L",\n  ");
+  }
+  wprintf(L"\n}\n");
 }
 
+/*
 void matrix2d_increment(Matrix2D*) {
 
 }
