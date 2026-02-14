@@ -1,3 +1,5 @@
+#include <stddef.h> // for size_t
+
 typedef struct {
   size_t rows;
   size_t cols;
@@ -7,14 +9,14 @@ typedef struct {
 // memory methods
 Matrix2D *matrix2d_construct_default();
 Matrix2D *matrix2d_construct(Matrix2D*, const size_t, const size_t, const float*);
-Matrix2D *matrix2d_copy_construct(Matrix2D*, Matrix2D*);
+Matrix2D *matrix2d_construct_copy(Matrix2D*, Matrix2D*);
 void matrix2d_destruct(Matrix2D*);
 
 // matrix2d methods
 // grade "Satisfactory"
 _Bool matrix2d_cmp(Matrix2D*, Matrix2D*, _Bool (*cmp)(float, float));
 int matrix2d_scanf(Matrix2D*);
-void matrix2d_printf(Matrix2D*);
+void matrix2d_wprintf(Matrix2D*);
 void matrix2d_increment(Matrix2D*);
 void matrix2d_decrement(Matrix2D*);
 void matrix2d_setter(Matrix2D*);
