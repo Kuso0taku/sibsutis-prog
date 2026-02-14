@@ -6,7 +6,7 @@ typedef struct {
 
 // memory methods
 Matrix2D *matrix2d_construct_default();
-Matrix2D *matrix2d_construct(Matrix2D*, const size_t, const size_t);
+Matrix2D *matrix2d_construct(Matrix2D*, const size_t, const size_t, const float*);
 void matrix2d_destruct(Matrix2D*);
 
 // matrix2d methods
