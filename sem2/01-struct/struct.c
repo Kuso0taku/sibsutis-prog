@@ -1,6 +1,7 @@
 #include <wchar.h>
 #include <stdlib.h> // malloc, free
 #include <string.h> // memcpy
+#include <math.h> // for fabs
 #include "struct.h"
 
 
@@ -44,13 +45,22 @@ void matrix2d_destruct(Matrix2D* matrix) {
   matrix = NULL;
 }
 
-/*
 // matrix2d methods
 // grade "Satisfactory"
-_Bool matrix2d_cmp(Matrix2D*, Matrix2D*, _Bool (*cmp)(float, float)) {
+int matrix2d_cmp(Matrix2D* m1, Matrix2D* m2) {
+  if (m1->rows * m1->cols != m2->rows * m2->cols)
+    return (m1->rows * m1->cols > m2->rows * m2->cols) ? 1 : -1;
 
+  for (size_t i=0; i < m1->rows * m1->cols; i++) {
+    if (fabs(*(m1->data+i) - *(m2->data+i)) > EPS) {
+      if (*(m1->data+i) > *(m2->data+i)) return 1;
+      else return -1;
+    }
+  }
+
+  return 0;
 }
-*/
+
 int matrix2d_wscanf(Matrix2D* matrix) {
   size_t n=0, m=0;
   int code=0;
@@ -146,28 +156,35 @@ Matrix2D* matrix2d_inverse(Matrix2D*) {
 
 }
 
+*/
 // some cmp funcs
-_Bool eql(float, float) {
-
+_Bool matrix2d_eql(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) == 0;
 }
 
-_Bool not_eql(float, float) {
-
+_Bool matrix2d_not_eql(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) != 0;
 }
 
-_Bool grtr(float, float) {
-
+_Bool matrix2d_grtr(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) > 0;
 }
 
-_Bool grtr_or_eql(float, float) {
-
+_Bool matrix2d_grtr_or_eql(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) >= 0;
 }
 
-_Bool less(float, float) {
-
+_Bool matrix2d_less(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) < 0;
 }
 
-_Bool less_or_eql(float, float) {
+_Bool matrix2d_less_or_eql(Matrix2D* m1, Matrix2D* m2) {
+  return matrix2d_cmp(m1, m2) <= 0;
+}
+
+/*
+// other
+void menu() {
 
 }
 */
