@@ -165,11 +165,37 @@ Matrix2D* matrix2d_get_col(Matrix2D* matrix, size_t col) {
   return m;
 }
 
-/*
 float matrix2d_determinant(Matrix2D* matrix) {
-
+  if (matrix->rows != matrix->cols) return 0;
+  return _determinant(matrix->data, matrix->rows);
 }
 
+float _determinant(const float *data, size_t n) {
+  if (n == 1) return *(data);
+  if (n == 2) return *(data) * *(data+3) - *(data+1) * *(data+2);
+
+  float det = 0, sign=1;
+  float* submatrix = (float*)malloc((n-1)*(n-1) * sizeof(float));
+  
+  for (size_t col=0; col<n; col++) {
+
+    for (size_t i=1, si=0; i < n; i++, si++) {
+      for (size_t j=0, sj=0; j < n; j++) {
+        if (j == col) continue;
+        *(submatrix + si * (n-1) + sj) = *(data + i*n + j);
+        sj++;
+      }
+    }
+
+      sign = (col%2) ? -1 : 1;
+      det += sign * *(data+col) * _determinant(submatrix, n-1);
+  }
+  
+  free(submatrix);
+  return det;
+}
+
+/*
 // grade "Excellent"
 Matrix2D* matrix2d_inverse(Matrix2D* matrix) {
 
