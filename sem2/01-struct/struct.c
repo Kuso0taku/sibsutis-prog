@@ -165,6 +165,22 @@ Matrix2D* matrix2d_get_col(Matrix2D* matrix, size_t col) {
   return m;
 }
 
+Matrix2D* matrix2d_transposition(Matrix2D* matrix) {
+  float *sub = (float*)malloc(matrix->rows * matrix->cols * sizeof(float));
+
+  for (size_t i=0; i<matrix->rows; i++) {
+    for (size_t j=0; j<matrix->cols; j++) {
+      *(sub + j*matrix->cols + i) = *(matrix->data + i*matrix->cols + j);
+    }
+  }
+
+  Matrix2D *result = matrix2d_construct_default();
+  result = matrix2d_construct(result, matrix->cols, matrix->rows, sub);
+
+  free(sub);
+  return result;
+}
+
 float matrix2d_determinant(Matrix2D* matrix) {
   if (matrix->rows != matrix->cols) return 0;
   return _determinant(matrix->data, matrix->rows);
@@ -198,7 +214,7 @@ float _determinant(const float *data, size_t n) {
 /*
 // grade "Excellent"
 Matrix2D* matrix2d_inverse(Matrix2D* matrix) {
-
+  
 }
 */
 
