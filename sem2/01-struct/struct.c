@@ -165,12 +165,12 @@ Matrix2D* matrix2d_get_col(Matrix2D* matrix, size_t col) {
   return m;
 }
 
-Matrix2D* matrix2d_transposition(Matrix2D* matrix) {
+Matrix2D* matrix2d_transpose(Matrix2D* matrix) {
   float *sub = (float*)malloc(matrix->rows * matrix->cols * sizeof(float));
 
   for (size_t i=0; i<matrix->rows; i++) {
     for (size_t j=0; j<matrix->cols; j++) {
-      *(sub + j*matrix->cols + i) = *(matrix->data + i*matrix->cols + j);
+      *(sub + j*matrix->rows + i) = *(matrix->data + i*matrix->cols + j);
     }
   }
 
@@ -191,32 +191,96 @@ float _determinant(const float *data, size_t n) {
   if (n == 2) return *(data) * *(data+3) - *(data+1) * *(data+2);
 
   float det = 0, sign=1;
-  float* submatrix = (float*)malloc((n-1)*(n-1) * sizeof(float));
+  float* minor = NULL;
   
-  for (size_t col=0; col<n; col++) {
+  for (size_t j=0; j < n; j++) {
+    minor = matrix2d_minor(data, n, 0, j);
+    if (!minor) return 0;
 
-    for (size_t i=1, si=0; i < n; i++, si++) {
-      for (size_t j=0, sj=0; j < n; j++) {
-        if (j == col) continue;
-        *(submatrix + si * (n-1) + sj) = *(data + i*n + j);
-        sj++;
-      }
+    sign = (j%2) ? -1 : 1;
+    det += sign * *(data+j) * _determinant(minor, n-1);
+    free(minor);
     }
-
-      sign = (col%2) ? -1 : 1;
-      det += sign * *(data+col) * _determinant(submatrix, n-1);
-  }
   
-  free(submatrix);
   return det;
 }
 
-/*
-// grade "Excellent"
-Matrix2D* matrix2d_inverse(Matrix2D* matrix) {
-  
+float* matrix2d_minor(const float* data, size_t n, size_t row, size_t col) {
+  if (n==1) return NULL;
+  float *minor = (float*)malloc((n-1)*(n-1) * sizeof(float));
+  if (!minor) return NULL;
+  size_t idx=0;
+  for (size_t i=0; i < n; i++) {
+    if (i == row) continue;
+    for (size_t j=0; j < n; j++) {
+      if (j == col) continue;
+      *(minor + idx++) = *(data + i*n + j);
+    }
+  }
+  return minor;
 }
-*/
+
+// grade "Excellent"
+Matrix2D* matrix2d_scale(Matrix2D* matrix, const float num) {
+  for (size_t i=0; i<matrix->cols * matrix->rows; i++) *(matrix->data + i) *= num;
+  return matrix;
+}
+
+Matrix2D* matrix2d_cofactor(Matrix2D* matrix) {
+  if (matrix->rows != matrix->cols) return NULL;
+  size_t n = matrix->rows;
+  
+  if (n == 1) {
+    float *cof = (float*)malloc(sizeof(float));
+    *cof = 1;
+    Matrix2D *result = matrix2d_construct_default();
+    result = matrix2d_construct(result, 1, 1, cof);
+    free(cof);
+    return result;
+  }
+
+  float *cof = (float*)malloc(n*n * sizeof(float));
+  if (!cof) return NULL;
+
+  float det_minor=0, sign=1;
+  float* minor = NULL;
+  
+  for (size_t i=0; i < n; i++) {
+    for (size_t j=0; j < n; j++) {
+      minor = matrix2d_minor(matrix->data, n, i, j);
+      if (!minor) {
+        free(cof);
+        return NULL;
+      }
+      sign = ((i+j)%2) ? -1 : 1;
+      det_minor = _determinant(minor, n-1);
+      free(minor);
+      *(cof + i*n+j) = sign * det_minor;
+    }
+  }
+
+  Matrix2D *result = matrix2d_construct_default();
+  result = matrix2d_construct(result, n, n, cof);
+  free(cof);
+  return result;
+}
+
+Matrix2D* matrix2d_inverse(Matrix2D* matrix) {
+  if (matrix->rows != matrix->cols) return NULL;
+  float det = matrix2d_determinant(matrix);
+  if (fabs(det) < EPS) return NULL;
+  
+  Matrix2D *cof = matrix2d_cofactor(matrix);
+  if (!cof) return NULL;
+
+  Matrix2D *adj = matrix2d_transpose(cof);
+  matrix2d_destruct(cof);
+  if (!adj) return NULL;
+
+  for (size_t i=0; i<adj->rows * adj->cols; i++) *(adj->data + i) /= det;
+  
+  return adj;
+}
 
 // some cmp funcs
 _Bool matrix2d_eql(Matrix2D* m1, Matrix2D* m2) {
