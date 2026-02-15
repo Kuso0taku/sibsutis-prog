@@ -32,6 +32,7 @@ float _determinant(const float*, size_t);
 float* matrix2d_minor(const float*, size_t, size_t, size_t);
 // grade "Excellent"
 Matrix2D* matrix2d_scale(Matrix2D*, const float);
+Matrix2D* matrix2d_cofactor(Matrix2D*);
 Matrix2D* matrix2d_inverse(Matrix2D*);
 
 // some cmp funcs
