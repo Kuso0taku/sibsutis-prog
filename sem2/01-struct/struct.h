@@ -29,7 +29,7 @@ Matrix2D* matrix2d_get_col(Matrix2D*, size_t);
 Matrix2D* matrix2d_transposition(Matrix2D*);
 float matrix2d_determinant(Matrix2D*);
 float _determinant(const float*, size_t);
-float* _minor(const float*, const float*, size_t) {
+float* matrix2d_minor(const float*, const float*, size_t) {
 // grade "Excellent"
 Matrix2D* matrix2d_scale(Matrix2D*, const float);
 Matrix2D* matrix2d_inverse(Matrix2D*);
