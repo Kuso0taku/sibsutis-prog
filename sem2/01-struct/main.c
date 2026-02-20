@@ -233,6 +233,27 @@ int main() {
 
         matrix2d_wprintf(matrix2d_get_row(active_matrix, sub_choice));
         break;
+
+      // get col
+      case 7:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
+        wprintf(L"Enter the column INDEX of the matrix: ");
+        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
+          sub_choice<0 || sub_choice>active_matrix->rows) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          wprintf(L"Invalid input! Try again: ");
+        }
+
+        matrix2d_wprintf(matrix2d_get_col(active_matrix, sub_choice));
+        break;
       
       // transpose
       case 8:
