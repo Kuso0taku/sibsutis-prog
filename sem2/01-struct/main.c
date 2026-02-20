@@ -19,14 +19,14 @@ int main() {
   do {
     fputws(L"Choose what to do:\n", stdout);
     fputws(L"(1)  Compare two matrices\n", stdout);
-    fputws(L"(2)  Input matrix\n", stdout);
-    fputws(L"(3)  Print matrix\n", stdout);
-    fputws(L"(4)  Change matrix values\n", stdout);
-    fputws(L"(5)  Fill matrix with random values\n", stdout);
-    fputws(L"(6)  Get matrix row\n", stdout);
-    fputws(L"(7)  Get matrix col\n", stdout);
-    fputws(L"(8)  Transpose matrix\n", stdout);
-    fputws(L"(9)  Find the determinant of matrix\n", stdout);
+    fputws(L"(2)  Input the matrix\n", stdout);
+    fputws(L"(3)  Print the matrix\n", stdout);
+    fputws(L"(4)  Change the matrix values\n", stdout);
+    fputws(L"(5)  Fill the matrix with random values\n", stdout);
+    fputws(L"(6)  Get the matrix row\n", stdout);
+    fputws(L"(7)  Get the matrix col\n", stdout);
+    fputws(L"(8)  Transpose the matrix\n", stdout);
+    fputws(L"(9)  Find the determinant of the matrix\n", stdout);
     fputws(L"(10) Find the inverse matrix\n", stdout);
     fputws(L"(11) Change active matrix\n", stdout);
     fputws(L"\n(0)  Exit\n", stdout);
@@ -279,6 +279,26 @@ int main() {
         
         wprintf(L"The determinant of the matrix is %.2f\n", 
                 matrix2d_determinant(active_matrix));
+        break;
+
+      // find the inverse matrix 
+      case 10:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
+        if (active_matrix->rows != active_matrix->cols) {
+          fputws(L"Oops! The matrix must be square!\n", stdout);
+          break;
+        }
+
+        if (!matrix2d_determinant(active_matrix)) {
+          fputws(L"Oops! The determinant must not be 0!\n", stdout);
+          break;
+        }
+
+        matrix2d_wprintf(matrix2d_inverse(active_matrix));
         break;
     }
 
