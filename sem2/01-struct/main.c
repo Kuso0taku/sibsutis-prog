@@ -264,6 +264,22 @@ int main() {
 
         active_matrix = matrix2d_transpose(active_matrix);
         break;
+
+      // determinant 
+      case 9:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
+        if (active_matrix->rows != active_matrix->cols) {
+          fputws(L"Oops! The matrix must be square!\n", stdout);
+          break;
+        }
+        
+        wprintf(L"The determinant of the matrix is %.2f\n", 
+                matrix2d_determinant(active_matrix));
+        break;
     }
 
     putwchar(L'\n');
