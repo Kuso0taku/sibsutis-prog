@@ -94,6 +94,10 @@ int main() {
         else fputws(L"False!\n", stdout);
 
         break;
+      case 2:
+        code = matrix2d_wscanf(active_matrix);
+        if (code == WEOF) return -1;
+        break;
     }
 
     putwchar(L'\n');
