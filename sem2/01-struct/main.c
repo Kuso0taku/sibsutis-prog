@@ -8,6 +8,7 @@ int main() {
   Matrix2D *matrix2 = matrix2d_construct_default();
   Matrix2D *active_matrix = matrix1; // current matrix
   Matrix2D *other_matrix = matrix2; // second matrix
+  Matrix2D *result_matrix = NULL; // matrix for results (get row/col or inverse)
   
   int choice = 0;
   int sub_choice = 0;
@@ -180,6 +181,11 @@ int main() {
       
       // fill with random values
       case 5:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
         float min=0, max=0;
 
         wprintf(L"Enter the minimal value of random number: ");
@@ -206,9 +212,35 @@ int main() {
         
         matrix2d_random(active_matrix, min, max);
         break;
+
+      // get row 
+      case 6:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
+        wprintf(L"Enter the row INDEX of the matrix: ");
+        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
+          sub_choice<0 || sub_choice>active_matrix->rows) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          wprintf(L"Invalid input! Try again: ");
+        }
+
+        matrix2d_wprintf(matrix2d_get_row(active_matrix, sub_choice));
+        break;
       
       // transpose
       case 8:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
         active_matrix = matrix2d_transpose(active_matrix);
         break;
     }
