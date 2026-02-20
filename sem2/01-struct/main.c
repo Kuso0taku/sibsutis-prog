@@ -13,11 +13,9 @@ int main() {
   int choice = 0;
   int sub_choice = 0;
   int matrix_choice = 1;
-  float det = 0;
-  _Bool cmp = 0;
   
   int code = 0;
-  fputws(L"This is an app for testing work with matrices.\n\n", stdout);
+  fputws(L"This is an app for testing work with (float) matrices.\n\n", stdout);
   do {
     fputws(L"Choose what to do:\n", stdout);
     fputws(L"(1)  Compare two matrices\n", stdout);
@@ -56,9 +54,12 @@ int main() {
     putwchar(L'\n');
     
     switch (choice) {
+      // Exit
       case 0: 
         fputws(L"Thanks for using me!\n", stdout);
         return 0;
+
+      // Compare
       case 1: 
         fputws(L"Avaliable compares are:\n", stdout);
         fputws(L"(1) Greater than\n", stdout);
@@ -80,7 +81,9 @@ int main() {
           wprintf(L"Invalid input! Try again: ");
         }
         
-        cmp = 0;
+        _Bool cmp = 0;
+
+        // type of comparing
         switch (sub_choice) {
           case 1: cmp = matrix2d_grtr(active_matrix, other_matrix); break;
           case 2: cmp = matrix2d_less(active_matrix, other_matrix); break;
@@ -94,12 +97,87 @@ int main() {
         else fputws(L"False!\n", stdout);
 
         break;
+
+      // input
       case 2:
         code = matrix2d_wscanf(active_matrix);
         if (code == WEOF) return -1;
         break;
+
+      // output
       case 3:
         matrix2d_wprintf(active_matrix);
+        break;
+
+      // change values 
+      case 4:
+        if (!active_matrix->data) {
+          fputws(L"Oops! The matrix is empty! First, input one\n", stdout);
+          break;
+        }
+
+        fputws(L"What do you want to do?\n", stdout);
+        fputws(L"(1) Increment every element in the matrix\n", stdout);
+        fputws(L"(2) Decrement every element in the matrix\n", stdout);
+        fputws(L"(3) Change a specific element in the matrix\n", stdout);
+        putwchar(L'\n');
+
+        wprintf(L"Enter your choice: ");
+        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
+          sub_choice<1 || sub_choice>3) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          wprintf(L"Invalid input! Try again: ");
+        }
+        
+        // type of change
+        switch (sub_choice) {
+          case 1: matrix2d_increment(active_matrix); break;
+          case 2: matrix2d_decrement(active_matrix); break;
+          case 3:
+            int row=0, col=0;
+            float value=0;
+
+            wprintf(L"Enter the row INDEX of the element to change: ");
+            while ((code = wscanf(L"%d", &row))!=1 || 
+            row<0 || row>active_matrix->rows) {
+              if (code == WEOF) {
+                wprintf(L"WEOF ERROR! ABORTING.\n");
+                return -1;
+              }
+              while (getwchar() != L'\n');
+              wprintf(L"Invalid input! Try again: ");
+            }
+
+            wprintf(L"Enter the column INDEX of the element to change: ");
+            while ((code = wscanf(L"%d", &col))!=1 || 
+              col<0 || col>active_matrix->cols) {
+              if (code == WEOF) {
+                wprintf(L"WEOF ERROR! ABORTING.\n");
+                return -1;
+              }
+              while (getwchar() != L'\n');
+              wprintf(L"Invalid input! Try again: ");
+            }
+
+            wprintf(L"Enter the value of the element to change: ");
+            while ((code = wscanf(L"%f", &value))!=1) {
+              if (code == WEOF) {
+                wprintf(L"WEOF ERROR! ABORTING.\n");
+                return -1;
+              }
+              while (getwchar() != L'\n');
+              wprintf(L"Invalid input! Try again: ");
+            }
+            
+            matrix2d_setter(active_matrix, row, col, value);
+
+            break;
+        }
+
         break;
     }
 
