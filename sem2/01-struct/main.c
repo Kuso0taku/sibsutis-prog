@@ -8,7 +8,6 @@ int main() {
   Matrix2D *matrix2 = matrix2d_construct_default();
   Matrix2D *active_matrix = matrix1; // current matrix
   Matrix2D *other_matrix = matrix2; // second matrix
-  Matrix2D *result_matrix = NULL; // matrix for results (get row/col or inverse)
   
   int choice = 0;
   int sub_choice = 0;
@@ -31,15 +30,6 @@ int main() {
     fputws(L"(11) Change active matrix\n", stdout);
     fputws(L"\n(0)  Exit\n", stdout);
     putwchar('\n');
-    /*
-    fputws(L"Matrices to choose:\n", stdout);
-    fputws(L"matrix1", stdout);
-    if (matrix_choice == 1) fputws(L" (active)", stdout);
-    putwchar(L'\n');
-    fputws(L"matrix2", stdout);
-    if (matrix_choice == 2) fputws(L" (active)", stdout);
-    putwchar(L'\n');
-    */
 
     wprintf(L"Enter your choice: ");
     while ((code = wscanf(L"%d", &choice))!=1 || choice<0 || choice>11) {
@@ -300,10 +290,39 @@ int main() {
 
         matrix2d_wprintf(matrix2d_inverse(active_matrix));
         break;
+      
+      // change active matrix
+      case 11:
+        fputws(L"Matrices to choose:\n", stdout);
+
+        fputws(L"matrix(1)", stdout);
+        if (matrix_choice == 1) fputws(L" - (active)", stdout);
+        putwchar(L'\n');
+        fputws(L"matrix(2)", stdout);
+        if (matrix_choice == 2) fputws(L" - (active)", stdout);
+        putwchar(L'\n');
+        
+        wprintf(L"Enter your choice: ");
+        while ((code = wscanf(L"%d", &matrix_choice))!=1 || 
+          matrix_choice<1 || matrix_choice>2) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          wprintf(L"Invalid input! Try again: ");
+        }
+
+        if (matrix_choice == 1) active_matrix = matrix1;
+        else active_matrix = matrix2;
+
+        wprintf(L"Now the matrix(%d) is active\n", matrix_choice);
+
+        break;
     }
 
     putwchar(L'\n');
-  } while (choice>0 && choice<11);
+  } while (choice>0 && choice<12);
 
   return 0;
 }
