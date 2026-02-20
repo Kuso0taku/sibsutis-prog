@@ -6,7 +6,6 @@ int main() {
   // init matrices
   Matrix2D *matrix1 = matrix2d_construct_default();
   Matrix2D *matrix2 = matrix2d_construct_default();
-  Matrix2D *result_matrix = NULL;
   Matrix2D *active_matrix = matrix1; // current matrix
   Matrix2D *other_matrix = matrix2; // second matrix
   
@@ -206,6 +205,11 @@ int main() {
         }
         
         matrix2d_random(active_matrix, min, max);
+        break;
+      
+      // transpose
+      case 8:
+        active_matrix = matrix2d_transpose(active_matrix);
         break;
     }
 
