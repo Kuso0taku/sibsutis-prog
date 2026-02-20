@@ -62,7 +62,7 @@ int matrix2d_cmp(Matrix2D* m1, Matrix2D* m2) {
 
 int matrix2d_wscanf(Matrix2D* matrix) {
   size_t n=0, m=0;
-  int code=0;
+  wint_t code=0;
   
   wprintf(L"Enter the number of rows: ");
   while ((code = wscanf(L"%zu", &n))!=1) {

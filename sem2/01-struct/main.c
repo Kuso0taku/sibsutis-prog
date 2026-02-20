@@ -9,11 +9,11 @@ int main() {
   Matrix2D *active_matrix = matrix1; // current matrix
   Matrix2D *other_matrix = matrix2; // second matrix
   
-  int choice = 0;
-  int sub_choice = 0;
-  int matrix_choice = 1;
+  size_t choice = 0;
+  size_t sub_choice = 0;
+  size_t matrix_choice = 1;
   
-  int code = 0;
+  wint_t code = 0;
   fputws(L"This is an app for testing work with (float) matrices.\n\n", stdout);
   do {
     fputws(L"Choose what to do:\n", stdout);
@@ -32,7 +32,7 @@ int main() {
     putwchar('\n');
 
     wprintf(L"Enter your choice: ");
-    while ((code = wscanf(L"%d", &choice))!=1 || choice<0 || choice>11) {
+    while ((code = wscanf(L"%zu", &choice))!=1 || choice>11) {
       if (code == WEOF) {
         wprintf(L"WEOF ERROR! ABORTING.\n");
         return -1;
@@ -61,7 +61,7 @@ int main() {
         putwchar(L'\n');
 
         wprintf(L"Enter your choice: ");
-        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
+        while ((code = wscanf(L"%zu", &sub_choice))!=1 || 
           sub_choice<1 || sub_choice>6) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
@@ -113,7 +113,7 @@ int main() {
         putwchar(L'\n');
 
         wprintf(L"Enter your choice: ");
-        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
+        while ((code = wscanf(L"%zu", &sub_choice))!=1 || 
           sub_choice<1 || sub_choice>3) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
@@ -128,12 +128,11 @@ int main() {
           case 1: matrix2d_increment(active_matrix); break;
           case 2: matrix2d_decrement(active_matrix); break;
           case 3:
-            int row=0, col=0;
+            size_t row=0, col=0;
             float value=0;
 
             wprintf(L"Enter the row INDEX of the element to change: ");
-            while ((code = wscanf(L"%d", &row))!=1 || 
-            row<0 || row>active_matrix->rows) {
+            while ((code = wscanf(L"%zu", &row))!=1 || row>active_matrix->rows) {
               if (code == WEOF) {
                 wprintf(L"WEOF ERROR! ABORTING.\n");
                 return -1;
@@ -143,8 +142,7 @@ int main() {
             }
 
             wprintf(L"Enter the column INDEX of the element to change: ");
-            while ((code = wscanf(L"%d", &col))!=1 || 
-              col<0 || col>active_matrix->cols) {
+            while ((code = wscanf(L"%zu", &col))!=1 || col>active_matrix->cols) {
               if (code == WEOF) {
                 wprintf(L"WEOF ERROR! ABORTING.\n");
                 return -1;
@@ -211,8 +209,8 @@ int main() {
         }
 
         wprintf(L"Enter the row INDEX of the matrix: ");
-        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
-          sub_choice<0 || sub_choice>active_matrix->rows) {
+        while ((code = wscanf(L"%zu", &sub_choice))!=1 || 
+          sub_choice>active_matrix->rows) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
             return -1;
@@ -232,8 +230,8 @@ int main() {
         }
 
         wprintf(L"Enter the column INDEX of the matrix: ");
-        while ((code = wscanf(L"%d", &sub_choice))!=1 || 
-          sub_choice<0 || sub_choice>active_matrix->rows) {
+        while ((code = wscanf(L"%zu", &sub_choice))!=1 || 
+          sub_choice>active_matrix->rows) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
             return -1;
@@ -303,7 +301,7 @@ int main() {
         putwchar(L'\n');
         
         wprintf(L"Enter your choice: ");
-        while ((code = wscanf(L"%d", &matrix_choice))!=1 || 
+        while ((code = wscanf(L"%zu", &matrix_choice))!=1 || 
           matrix_choice<1 || matrix_choice>2) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
@@ -316,7 +314,7 @@ int main() {
         if (matrix_choice == 1) active_matrix = matrix1;
         else active_matrix = matrix2;
 
-        wprintf(L"Now the matrix(%d) is active\n", matrix_choice);
+        wprintf(L"Now the matrix(%zu) is active\n", matrix_choice);
 
         break;
     }
