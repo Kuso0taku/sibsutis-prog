@@ -174,10 +174,38 @@ int main() {
             }
             
             matrix2d_setter(active_matrix, row, col, value);
-
             break;
         }
 
+        break;
+      
+      // fill with random values
+      case 5:
+        float min=0, max=0;
+
+        wprintf(L"Enter the minimal value of random number: ");
+        while ((code = wscanf(L"%f", &min))!=1) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          wprintf(L"Invalid input! Try again: ");
+        }
+        
+        wprintf(L"Enter the maximum value of random number: ");
+        while ((code = wscanf(L"%f", &max))!=1 || max<min) {
+          if (code == WEOF) {
+            wprintf(L"WEOF ERROR! ABORTING.\n");
+            return -1;
+          }
+          while (getwchar() != L'\n');
+          if (max<min) wprintf(L"Max value must be greater than or equal to min! ");
+          else wprintf(L"Invalid input! ");
+          wprintf(L"Try again: ");
+        }
+        
+        matrix2d_random(active_matrix, min, max);
         break;
     }
 
