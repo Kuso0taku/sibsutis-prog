@@ -98,6 +98,9 @@ int main() {
         code = matrix2d_wscanf(active_matrix);
         if (code == WEOF) return -1;
         break;
+      case 3:
+        matrix2d_wprintf(active_matrix);
+        break;
     }
 
     putwchar(L'\n');
