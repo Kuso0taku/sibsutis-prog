@@ -2,7 +2,7 @@
 #include <string.h> // memcpy
 #include <math.h> // for fabs
 #include <time.h> // for time() - seed for srand()
-#include "struct.h"
+#include "matrix2d.h"
 
 // memory methods
 Matrix2D *matrix2d_construct_default() {

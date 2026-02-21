@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra
 LDFLAGS=
-SOURCES=struct.c main.c
+SOURCES=matrix2d.c main.c
 OBJECTS=$(SOURCES:.c=.o)
-HEADERS=struct.h
+HEADERS=matrix2d.h
 TARGET=program
 
 all: $(TARGET)

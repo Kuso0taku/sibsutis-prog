@@ -1,6 +1,6 @@
 #include <wchar.h>
 #include <stdio.h>
-#include "struct.h"
+#include "matrix2d.h"
 
 int main() {
   // init matrices
