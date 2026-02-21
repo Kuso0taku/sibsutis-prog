@@ -1,3 +1,4 @@
+#include <wchar.h>
 #include <stddef.h> // for size_t
 
 #define EPS 1e-9 // for float comparing
@@ -17,7 +18,7 @@ void matrix2d_destruct(Matrix2D*);
 // matrix2d methods
 // grade "Satisfactory"
 int matrix2d_cmp(Matrix2D*, Matrix2D*);
-int matrix2d_wscanf(Matrix2D*);
+wint_t matrix2d_wscanf(Matrix2D*);
 void matrix2d_wprintf(Matrix2D*);
 void matrix2d_increment(Matrix2D*);
 void matrix2d_decrement(Matrix2D*);

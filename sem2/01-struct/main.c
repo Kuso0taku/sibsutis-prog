@@ -35,6 +35,8 @@ int main() {
     while ((code = wscanf(L"%zu", &choice))!=1 || choice>11) {
       if (code == WEOF) {
         wprintf(L"WEOF ERROR! ABORTING.\n");
+        matrix2d_destruct(active_matrix);
+        matrix2d_destruct(other_matrix);
         return -1;
       }
       while (getwchar() != L'\n');
@@ -47,6 +49,8 @@ int main() {
       // Exit
       case 0: 
         fputws(L"Thanks for using me!\n", stdout);
+        matrix2d_destruct(active_matrix);
+        matrix2d_destruct(other_matrix);
         return 0;
 
       // Compare
@@ -65,6 +69,8 @@ int main() {
           sub_choice<1 || sub_choice>6) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -91,7 +97,11 @@ int main() {
       // input
       case 2:
         code = matrix2d_wscanf(active_matrix);
-        if (code == WEOF) return -1;
+        if (code == WEOF) {
+          matrix2d_destruct(active_matrix);
+          matrix2d_destruct(other_matrix);
+          return -1;
+        }
         break;
 
       // output
@@ -117,6 +127,8 @@ int main() {
           sub_choice<1 || sub_choice>3) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -135,6 +147,8 @@ int main() {
             while ((code = wscanf(L"%zu", &row))!=1 || row>active_matrix->rows) {
               if (code == WEOF) {
                 wprintf(L"WEOF ERROR! ABORTING.\n");
+                matrix2d_destruct(active_matrix);
+                matrix2d_destruct(other_matrix);
                 return -1;
               }
               while (getwchar() != L'\n');
@@ -145,6 +159,8 @@ int main() {
             while ((code = wscanf(L"%zu", &col))!=1 || col>active_matrix->cols) {
               if (code == WEOF) {
                 wprintf(L"WEOF ERROR! ABORTING.\n");
+                matrix2d_destruct(active_matrix);
+                matrix2d_destruct(other_matrix);
                 return -1;
               }
               while (getwchar() != L'\n');
@@ -155,6 +171,8 @@ int main() {
             while ((code = wscanf(L"%f", &value))!=1) {
               if (code == WEOF) {
                 wprintf(L"WEOF ERROR! ABORTING.\n");
+                matrix2d_destruct(active_matrix);
+                matrix2d_destruct(other_matrix);
                 return -1;
               }
               while (getwchar() != L'\n');
@@ -180,6 +198,8 @@ int main() {
         while ((code = wscanf(L"%f", &min))!=1) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -190,6 +210,8 @@ int main() {
         while ((code = wscanf(L"%f", &max))!=1 || max<min) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -213,6 +235,8 @@ int main() {
           sub_choice>active_matrix->rows) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -234,6 +258,8 @@ int main() {
           sub_choice>active_matrix->rows) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -305,6 +331,8 @@ int main() {
           matrix_choice<1 || matrix_choice>2) {
           if (code == WEOF) {
             wprintf(L"WEOF ERROR! ABORTING.\n");
+            matrix2d_destruct(active_matrix);
+            matrix2d_destruct(other_matrix);
             return -1;
           }
           while (getwchar() != L'\n');
@@ -321,6 +349,8 @@ int main() {
 
     putwchar(L'\n');
   } while (choice>0 && choice<12);
-
+  
+  matrix2d_destruct(active_matrix);
+  matrix2d_destruct(other_matrix);
   return 0;
 }

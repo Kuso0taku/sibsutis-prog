@@ -1,4 +1,3 @@
-#include <wchar.h>
 #include <stdlib.h> // malloc, free, rand(), srand(), RAND_MAX
 #include <string.h> // memcpy
 #include <math.h> // for fabs
@@ -60,7 +59,7 @@ int matrix2d_cmp(Matrix2D* m1, Matrix2D* m2) {
   return 0;
 }
 
-int matrix2d_wscanf(Matrix2D* matrix) {
+wint_t matrix2d_wscanf(Matrix2D* matrix) {
   size_t n=0, m=0;
   wint_t code=0;
   
@@ -68,7 +67,7 @@ int matrix2d_wscanf(Matrix2D* matrix) {
   while ((code = wscanf(L"%zu", &n))!=1) {
     if (code == WEOF) {
       wprintf(L"WEOF ERROR! ABORTING.\n");
-      return -1;
+      return WEOF;
     }
     while (getwchar() != L'\n');
     wprintf(L"Invalid input! Try again: ");
@@ -78,7 +77,7 @@ int matrix2d_wscanf(Matrix2D* matrix) {
   while ((code = wscanf(L"%zu", &m))!=1) {
     if (code == WEOF) {
       wprintf(L"WEOF ERROR! ABORTING.\n");
-      return -1;
+      return WEOF;
     }
     while (getwchar() != L'\n');
     wprintf(L"Invalid input! Try again: ");
@@ -91,7 +90,7 @@ int matrix2d_wscanf(Matrix2D* matrix) {
     while ((code = wscanf(L"%f", arr+i))!=1) {
       if (code == WEOF) {
         wprintf(L"WEOF ERROR! ABORTING.\n");
-        return -1;
+        return WEOF;
       }
       while (getwchar() != L'\n');
       wprintf(L"Invalid input! Try again: ");
