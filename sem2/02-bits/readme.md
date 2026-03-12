@@ -2,7 +2,7 @@
 
 There're two different realizations (I prefer the last one):
 1. Bitwise fields struct (implemented in `bitstruct.h` and `bitstruct.c`)
-2. Bitwise operations only (implemented in `bitstruct.h` and `bitstruct.c`)
+2. Bitwise operations only (implemented in `bitops.h` and `bitops.c`)
 
 ## Bitwise fields struct (grade "Satisfactory")
 
