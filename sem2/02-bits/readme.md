@@ -59,7 +59,7 @@ Example of realization:
 ```
 typedef struct {
     unsigned int red : 8;
-    unsigned int gren : 8;
+    unsigned int green : 8;
     unsigned int blue : 8;
     unsigned int bright : 8;
     unsigned int temp : 14;
