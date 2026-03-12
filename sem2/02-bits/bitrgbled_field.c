@@ -2,77 +2,77 @@
 #include "bitrgbled_field.h"
 
 // malloc new structure
-rgbled *rgbled_field_create(void) {
-  rgbled* rgb = (rgbled*)malloc(sizeof(rgbled));
-  rgb->red = 0;
-  rgb->green = 0;
-  rgb->blue = 0;
-  rgb->bright = 0;
-  rgb->temp = 0;
-  rgb->type = 0;
-  rgb->mode = 0;
-  return rgb;
+rgbled_field *rgbled_field_create(void) {
+  rgbled_field* rgbled = (rgbled_field*)malloc(sizeof(rgbled_field));
+  rgbled->red = 0;
+  rgbled->green = 0;
+  rgbled->blue = 0;
+  rgbled->bright = 0;
+  rgbled->temp = 0;
+  rgbled->type = 0;
+  rgbled->mode = 0;
+  return rgbled;
 }
 
 // free memory
-void rgbled_field_free(rgbled* rgb) {
-  free(rgb);
+void rgbled_field_free(rgbled_field* rgbled) {
+  free(rgbled);
 }
 
-// some functions to get a specific value from rgbled structure
-unsigned char rgbled_field_get_red(rgbled* rgb) {
-  return rgb->red;
+// some functions to get a specific value from rgbled_field structure
+unsigned char rgbled_field_get_red(rgbled_field* rgbled) {
+  return rgbled->red;
 }
 
-unsigned char rgbled_field_get_green(rgbled* rgb) {
-  return rgb->green;
+unsigned char rgbled_field_get_green(rgbled_field* rgbled) {
+  return rgbled->green;
 }
 
-unsigned char rgbled_field_get_blue(rgbled* rgb) {
-  return rgb->blue;
+unsigned char rgbled_field_get_blue(rgbled_field* rgbled) {
+  return rgbled->blue;
 }
 
-unsigned char rgbled_field_get_bright(rgbled* rgb) {
-  return rgb->bright;
+unsigned char rgbled_field_get_bright(rgbled_field* rgbled) {
+  return rgbled->bright;
 }
 
-unsigned int rgbled_field_get_temp(rgbled* rgb) {
-  return rgb->temp;
+unsigned int rgbled_field_get_temp(rgbled_field* rgbled) {
+  return rgbled->temp;
 }
 
-unsigned char rgbled_field_get_type(rgbled* rgb) {
-  return rgb->type;
+unsigned char rgbled_field_get_type(rgbled_field* rgbled) {
+  return rgbled->type;
 }
 
-unsigned char rgbled_field_get_mode(rgbled* rgb) {
-  return rgb->mode;
+unsigned char rgbled_field_get_mode(rgbled_field* rgbled) {
+  return rgbled->mode;
 }
 
-// some functions to set a specific value from rgbled structure
-void rgbled_field_set_red(rgbled* rgb, unsigned char red) {
-  rgb->red = red;
+// some functions to set a specific value from rgbled_field structure
+void rgbled_field_set_red(rgbled_field* rgbled, unsigned char red) {
+  rgbled->red = red;
 }
 
-void rgbled_field_set_green(rgbled* rgb, unsigned char green) {
-  rgb->green = green;
+void rgbled_field_set_green(rgbled_field* rgbled, unsigned char green) {
+  rgbled->green = green;
 }
 
-void rgbled_field_set_blue(rgbled* rgb, unsigned char blue) {
-  rgb->blue = blue;
+void rgbled_field_set_blue(rgbled_field* rgbled, unsigned char blue) {
+  rgbled->blue = blue;
 }
 
-void rgbled_field_set_bright(rgbled* rgb, unsigned char bright) {
-  rgb->bright = bright;
+void rgbled_field_set_bright(rgbled_field* rgbled, unsigned char bright) {
+  rgbled->bright = bright;
 }
 
-void rgbled_field_set_temp(rgbled* rgb, unsigned int temp) {
-  rgb->temp = temp;
+void rgbled_field_set_temp(rgbled_field* rgbled, unsigned int temp) {
+  rgbled->temp = temp;
 }
 
-void rgbled_field_set_type(rgbled* rgb, unsigned char type) {
-  rgb->type = type;
+void rgbled_field_set_type(rgbled_field* rgbled, unsigned char type) {
+  rgbled->type = type;
 }
 
-void rgbled_field_set_mode(rgbled* rgb, unsigned char mode) {
-  rgb->mode = mode;
+void rgbled_field_set_mode(rgbled_field* rgbled, unsigned char mode) {
+  rgbled->mode = mode;
 }
