@@ -1,8 +1,8 @@
 # Bit manipulations
 
 There're two different realizations (I prefer the last one):
-1. Bitwise fields struct (implemented in `bitstruct.h` and `bitstruct.c`)
-2. Bitwise operations only (implemented in `bitops.h` and `bitops.c`)
+1. Bitwise fields struct (implemented in `bitrgbled_field.h` and `bitrgbled_field.c`)
+2. Bitwise operations only (implemented in `bitrgbled_ops.h` and `bitrgbled_ops.c`)
 
 ## Bitwise fields struct (grade "Satisfactory")
 
