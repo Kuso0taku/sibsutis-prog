@@ -12,19 +12,19 @@ rgbled *rgbled_field_create(void); // malloc new structure
 void rgbled_field_free(rgbled*); // free memory
 
 // some functions to get a specific value from rgbled structure
-unsigned char rgbled_field_get_red(void);
-unsigned char rgbled_field_get_green(void);
-unsigned char rgbled_field_get_blue(void);
-unsigned char rgbled_field_get_bright(void);
-unsigned int rgbled_field_get_temp(void);
-unsigned char rgbled_field_get_type(void);
-unsigned char rgbled_field_get_mode(void);
+unsigned char rgbled_field_get_red(rgbled*);
+unsigned char rgbled_field_get_green(rgbled*);
+unsigned char rgbled_field_get_blue(rgbled*);
+unsigned char rgbled_field_get_bright(rgbled*);
+unsigned int rgbled_field_get_temp(rgbled*);
+unsigned char rgbled_field_get_type(rgbled*);
+unsigned char rgbled_field_get_mode(rgbled*);
 
 // some functions to set a specific value from rgbled structure
-void rgbled_field_set_red(unsigned char);
-void rgbled_field_set_green(unsigned char);
-void rgbled_field_set_blue(unsigned char);
-void rgbled_field_set_bright(unsigned char);
-void rgbled_field_set_temp(unsigned int);
-void rgbled_field_set_type(unsigned char);
-void rgbled_field_set_mode(unsigned char);
+void rgbled_field_set_red(rgbled*, unsigned char);
+void rgbled_field_set_green(rgbled*, unsigned char);
+void rgbled_field_set_blue(rgbled*, unsigned char);
+void rgbled_field_set_bright(rgbled*, unsigned char);
+void rgbled_field_set_temp(rgbled*, unsigned int);
+void rgbled_field_set_type(rgbled*, unsigned char);
+void rgbled_field_set_mode(rgbled*, unsigned char);
