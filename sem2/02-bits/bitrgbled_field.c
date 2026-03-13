@@ -36,7 +36,7 @@ unsigned char rgbled_field_get_bright(rgbled_field* rgbled) {
   return rgbled->bright;
 }
 
-unsigned int rgbled_field_get_temp(rgbled_field* rgbled) {
+unsigned short rgbled_field_get_temp(rgbled_field* rgbled) {
   return rgbled->temp;
 }
 
@@ -65,7 +65,7 @@ void rgbled_field_set_bright(rgbled_field* rgbled, unsigned char bright) {
   rgbled->bright = bright;
 }
 
-void rgbled_field_set_temp(rgbled_field* rgbled, unsigned int temp) {
+void rgbled_field_set_temp(rgbled_field* rgbled, unsigned short temp) {
   rgbled->temp = temp;
 }
 

@@ -16,7 +16,7 @@ unsigned char rgbled_field_get_red(rgbled_field*);
 unsigned char rgbled_field_get_green(rgbled_field*);
 unsigned char rgbled_field_get_blue(rgbled_field*);
 unsigned char rgbled_field_get_bright(rgbled_field*);
-unsigned int rgbled_field_get_temp(rgbled_field*);
+unsigned short rgbled_field_get_temp(rgbled_field*);
 unsigned char rgbled_field_get_type(rgbled_field*);
 unsigned char rgbled_field_get_mode(rgbled_field*);
 
@@ -25,6 +25,6 @@ void rgbled_field_set_red(rgbled_field*, unsigned char);
 void rgbled_field_set_green(rgbled_field*, unsigned char);
 void rgbled_field_set_blue(rgbled_field*, unsigned char);
 void rgbled_field_set_bright(rgbled_field*, unsigned char);
-void rgbled_field_set_temp(rgbled_field*, unsigned int);
+void rgbled_field_set_temp(rgbled_field*, unsigned short);
 void rgbled_field_set_type(rgbled_field*, unsigned char);
 void rgbled_field_set_mode(rgbled_field*, unsigned char);
