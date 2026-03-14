@@ -35,11 +35,11 @@ It's necessary to demonstrate how does alignment work. For example, `alignof` an
 Create a struct w/ only one element that can contain all the values has to. Otherwods, sum of `sizeof` every element is needed to store <= `sizeof struct->data`. Thus, for **bitstruct** this structure will looks like that:  
 ```
 typedef struct {
-    unsigned int data;
+    unsigned short data;
 } bitops;
 ```  
   
-**Explanation**: `sizeof(int)` in 64-bit system >= 16 bits, `sizeof(bitstruct)` equals 10 bits. It's obvious that 6 bits won't be used. But this is only way exists to store 10 bits in one variable. 'Cuz there's no type with 10 bits, only `char` with 8 bits and `int` with 16 bits.  
+**Explanation**: `sizeof(short)` in 64-bit system >= 16 bits, `sizeof(bitstruct)` equals 10 bits. It's obvious that 6 bits won't be used. But this is only way exists to store 10 bits in one variable. 'Cuz there's no type with 10 bits, only `char` with 8 bits and `int` with 16 bits.  
   
 Unlike bitwise fields structure, it's so hard that only bitwise operations (and masks) can be used.  
 It also needs to define **constants** for offsets, sizes (in bits) and masks for every value.  
