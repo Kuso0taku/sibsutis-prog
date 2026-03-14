@@ -1,37 +1,37 @@
 // fields for red 
 #define RED_OFFSET 0
 #define RED_BITS 8
-#define RED_MASK (((1ULL << RED_BITS) - 1)
+#define RED_MASK ((1ULL << RED_BITS) - 1)
 
 // fields for green
 #define GREEN_OFFSET 8
 #define GREEN_BITS 8
-#define GREEN_MASK (((1ULL << GREEN_BITS) - 1)
+#define GREEN_MASK ((1ULL << GREEN_BITS) - 1)
 
 // fields for blue 
 #define BLUE_OFFSET 16
 #define BLUE_BITS 8
-#define BLUE_MASK (((1ULL << BLUE_BITS) - 1)
+#define BLUE_MASK ((1ULL << BLUE_BITS) - 1)
 
 // fields for bright 
 #define BRIGHT_OFFSET 24
 #define BRIGHT_BITS 8
-#define BRIGHT_MASK (((1ULL << BRIGHT_BITS) - 1)
+#define BRIGHT_MASK ((1ULL << BRIGHT_BITS) - 1)
 
 // fields for temp 
 #define TEMP_OFFSET 32
 #define TEMP_BITS 14
-#define TEMP_MASK (((1ULL << TEMP_BITS) - 1)
+#define TEMP_MASK ((1ULL << TEMP_BITS) - 1)
 
 // fields for type
 #define TYPE_OFFSET 46
 #define TYPE_BITS 2
-#define TYPE_MASK (((1ULL << TYPE_BITS) - 1)
+#define TYPE_MASK ((1ULL << TYPE_BITS) - 1)
 
 // fields for mode
 #define MODE_OFFSET 48
 #define MODE_BITS 2
-#define MODE_MASK (((1ULL << MODE_BITS) - 1)
+#define MODE_MASK ((1ULL << MODE_BITS) - 1)
 
 // structure
 typedef struct {
