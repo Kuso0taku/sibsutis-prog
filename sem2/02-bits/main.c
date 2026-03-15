@@ -2,8 +2,19 @@
 #include "bitrgbled_field.h"
 #include "bitrgbled_ops.h"
 
+typedef struct {
+    unsigned int red : 8;
+    unsigned int green : 8;
+    unsigned int blue : 8;
+    unsigned int bright : 8;
+    unsigned int temp : 14;
+    unsigned int type : 2;
+    unsigned int mode : 2;
+} __attribute__((aligned(8))) rgbled_field_aligned;
+
 void print_field(rgbled_field* rgbled) {
   printf("size: %zu bytes\n", sizeof(rgbled_field));
+  printf("align: %zu bits\n", alignof(rgbled_field));
   printf("red = %u\n", rgbled_field_get_red(rgbled));
   printf("green = %u\n", rgbled_field_get_green(rgbled));
   printf("blue = %u\n", rgbled_field_get_blue(rgbled));
@@ -25,8 +36,16 @@ void print_ops(rgbled_ops* rgbled) {
 }
 
 int main() {
-  rgbled_field* rgbled_field = rgbled_field_create();
   printf("Rgbled with bit FIELD\n\n");
+  
+  printf("Align 4 bytes\n\n");
+  printf("size: %zu bytes\n", sizeof(rgbled_field_aligned));
+  printf("align: %zu bytes\n", alignof(rgbled_field_aligned));
+
+  putchar('\n');
+
+  rgbled_field* rgbled_field = rgbled_field_create();
+  printf("Default Align (1 byte)\n\n");
   print_field(rgbled_field);
   putchar('\n');
   
