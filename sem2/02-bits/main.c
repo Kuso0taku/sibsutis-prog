@@ -45,7 +45,7 @@ int main() {
   putchar('\n');
 
   rgbled_field* rgbled_field = rgbled_field_create();
-  printf("Auto Align (1 byte)\n\n");
+  printf("Auto Align\n\n");
   print_field(rgbled_field);
   putchar('\n');
   
