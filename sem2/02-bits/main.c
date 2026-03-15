@@ -38,7 +38,7 @@ void print_ops(rgbled_ops* rgbled) {
 int main() {
   printf("Rgbled with bit FIELD\n\n");
   
-  printf("Align 4 bytes\n\n");
+  printf("Custom Align\n\n");
   printf("size: %zu bytes\n", sizeof(rgbled_field_aligned));
   printf("align: %zu bytes\n", alignof(rgbled_field_aligned));
 
