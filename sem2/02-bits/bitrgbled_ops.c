@@ -4,13 +4,15 @@
 // malloc new structure
 rgbled_ops *rgbled_ops_create(void) {
   rgbled_ops* rgbled = (rgbled_ops*)malloc(sizeof(rgbled_ops));
+  if (!rgbled) return rgbled;
+
   rgbled->data = 0;
   return rgbled;
 }
 
 // free memory
 void rgbled_ops_free(rgbled_ops* rgbled) {
-  free(rgbled);
+  if (rgbled) free(rgbled);
 }
 
 // some functions to get a specific value from rgbled_ops structure

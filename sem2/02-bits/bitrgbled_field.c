@@ -4,6 +4,8 @@
 // malloc new structure
 rgbled_field *rgbled_field_create(void) {
   rgbled_field* rgbled = (rgbled_field*)malloc(sizeof(rgbled_field));
+  if (!rgbled) return rgbled;
+
   rgbled->red = 0;
   rgbled->green = 0;
   rgbled->blue = 0;
@@ -16,7 +18,7 @@ rgbled_field *rgbled_field_create(void) {
 
 // free memory
 void rgbled_field_free(rgbled_field* rgbled) {
-  free(rgbled);
+  if (rgbled) free(rgbled);
 }
 
 // some functions to get a specific value from rgbled_field structure
